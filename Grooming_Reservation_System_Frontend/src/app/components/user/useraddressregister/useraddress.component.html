@@ -1,0 +1,166 @@
+<div class="card">
+    <div class="card-body p-5">
+      <h2 class="text-uppercase text-center mb-5">Add  User Address</h2>
+  
+      <form (ngSubmit)="!addressForm.invalid && registerAddress()" #addressForm="ngForm">
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form3Example1cg">HOUSE ADDRESS</label>
+          <input
+            type="text"
+            id="form3Example1cg"
+            class="form-control form-control-lg"
+            name="houseno"
+            required
+            #houseno="ngModel"
+            [(ngModel)]="address.houseno"
+            
+          />
+          <div
+            *ngIf="houseno.invalid && (houseno.dirty || houseno.touched)"
+          >
+            <div *ngIf="houseno.errors?.['required']">
+              house number is required
+            </div>
+  
+            <div *ngIf="houseno.errors?.['pattern']">
+              house number should have only alphabets
+            </div>
+          </div>
+          <label class="form-label" for="form3Example1cg">STREET NAME</label>
+          <input
+            type="text"
+            id="form3Example5cg"
+            class="form-control form-control-lg"
+            name="streetname"
+            maxlength="100"
+            required
+            #streetname="ngModel"
+            [(ngModel)]="address.street"
+            
+          />
+          <div *ngIf="streetname.invalid && (streetname.dirty || streetname.touched)">
+            <div *ngIf="streetname.errors?.['required']">streetname is required</div>
+  
+            <div *ngIf="streetname.errors?.['maxlength']">
+                streetname should have atleast 100 chars
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form3Example3cg">CITY NAME</label>
+          <input
+            type="text"
+            id="form3Example3cg"
+            class="form-control form-control-lg"
+            name="city"
+            maxlength="30"
+            required
+            #city="ngModel"
+            [(ngModel)]="address.city"
+            
+          />
+          <div *ngIf="city.invalid && (city.dirty || city.touched)">
+            <div *ngIf="city.errors?.['required']">city name is required</div>
+  
+            <div *ngIf="city.errors?.['maxlength']">
+                city name max length should be less than 30
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form3Example4cg">STATE NAME</label>
+          <input
+            type="text"
+            id="form3Example4cg"
+            class="form-control form-control-lg"
+            name="statename"
+            maxlength="20"
+            required
+            #statename="ngModel"
+            [(ngModel)]="address.state"/>
+          <div
+            *ngIf=" statename.invalid && (statename.dirty || statename.touched) ">
+            <div *ngIf="statename.errors?.['required']">
+                statename is required
+            </div>
+  
+            <div *ngIf="statename.errors?.['maxlength']">
+                statename should have atleast 20 digits
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form3Example4cdg">ZIPCODE</label>
+          <input
+            type="zipcode"
+            id="form3Example4cdg"
+            class="form-control form-control-lg"
+            name="zipcode"
+            minlength="6"
+            maxlength="8"
+            required
+            #zipcode="ngModel"
+            [(ngModel)]="address.zipcode"
+            pattern="^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$"
+          />
+          <div *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched)">
+            <div *ngIf="zipcode.errors?.['required']">zipcode is required</div>
+  
+            <div *ngIf="zipcode.errors?.['minlength']">
+                zipcode should have atleast 6 character and less than 8 digit
+            </div>
+  
+            <div *ngIf="zipcode.errors?.['pattern']">
+              Invalid zipcode
+            </div>
+          </div>
+        </div>
+
+        <div class="form-outline mb-2">
+            <label class="form-label" for="form3Example4cdg">COUNTRY</label>
+            <input
+              type="type"
+              id="form3Example4cdg"
+              class="form-control form-control-lg"
+              name="country"
+               maxlength="20"
+              required
+              #country="ngModel"
+              [(ngModel)]="address.country"
+            />
+            <div *ngIf="country.invalid && (country.dirty || country.touched)">
+              <div *ngIf="country.errors?.['required']">country is required</div>
+    
+              <div *ngIf="country.errors?.['maxlength']">
+                country should have  less than 20 character
+              </div>
+            </div>
+          </div>
+  
+        <!-- <div class="form-check d-flex justify-content-center mb-5">
+          <input
+            class="form-check-input me-2"
+            type="checkbox"
+            value=""
+            id="TCCheckbox"
+          />
+          <label class="form-check-label" for="form2Example3g">
+            I agree all statements in
+            <a href="#!" class="text-body"><u>Terms of service</u></a>
+          </label>
+        </div> -->
+        <br >
+        <div class="d-flex justify-content-center">
+          <button
+            type="submit"
+            mat-raised-button color="warn" >
+            Save Address
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,86 @@
+<!--Top Navigation Bar-->
+<!-- <app-navbar></app-navbar> -->
+<!-- Header-->
+
+<!-- Section Cards and Sidebar-->
+<section class="cards-section pr-1">
+  <div class="row">
+    <!-- Sidebar-->
+    <div class="col-md-2 sidebar-div gradient-custom-2 text-playfair">
+      <a class="navbar-brand sidebar-top" href="#sidebar"> </a>
+      <!-- Your sidebar content goes here -->
+      <div id="sidebar" class="pt-5 pl-4 sidenav">
+        <a (click)="getAllSalons()"> All Salons</a>
+        <a
+          (click)="getSalonbyCategory(salonCategory)"
+          *ngFor="let salonCategory of categories"
+          >{{ salonCategory }}</a
+        >
+      </div>
+    </div>
+    <!--Salon Cards-->
+    <div class="col-md-10 py-5">
+      <div class="text-lg-left col-8">
+        <h2 class="section-title text-playfair mb-4">Salons</h2>
+        <span class="section-subtitle">Where Style meets Innovation</span>
+      </div>
+
+      <div
+        class="row gx-3 gx-lg-3 row-cols-4 row-cols-md-4 row-cols-xl-4 justify-content-center"
+      >
+        <div
+          class="col mb-3"
+          *ngFor="
+            let salon of salons
+              | paginate : { itemsPerPage: count, currentPage: p }
+          "
+        >
+          <div class="card h-100 card-box-shadow">
+            <!-- Product image-->
+            <img
+              class="card-img-top"
+              style="height: 16rem"
+              src="{{ salon.salonpicurl }}"
+              alt="Salon Picture"
+            />
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center">
+                <!-- Product name-->
+                <h2 class="fw-bolder">{{ salon.salonname }}</h2>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    Category: <b>{{ salon.saloncategory }}</b>
+                  </li>
+                  <li class="list-group-item">
+                    Salon Rating: {{ salon.salonrating }}
+                  </li>
+                  <li class="list-group-item">
+                    Salon Address: {{ salon.salonaddress }} ,
+                    {{ salon.saloncity }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+              <div class="text-center">
+                <a
+                  class="btn button-87 mt-auto"
+                  routerLink="/salonpage/{{ salon.salonid }}"
+                  >View Salon</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer-->

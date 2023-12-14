@@ -1,0 +1,60 @@
+<div class="align-items-center fle margin">
+  <h1 class="tabletitle alig">My Address</h1>
+</div>
+<div class="tablediv">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">houseno</th>
+        <th scope="col">street</th>
+        <th scope="col">city</th>
+        <th scope="col">state</th>
+        <th scope="col">zipcode</th>
+        <th scope="col">country</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let address of address
+            | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum }
+        "
+      >
+        <td scope="col">{{ address.houseno }}</td>
+        <td scope="col">{{ address.street }}</td>
+        <td scope="col">{{ address.city }}</td>
+        <td scope="col">{{ address.state }}</td>
+        <td scope="col">{{ address.zipcode }}</td>
+        <td scope="col">{{ address.country }}</td>
+        <td>
+          <button
+            color="primary"
+            mat-raised-button
+            (click)="updateaddress(this.address.addressid)"
+          >
+            Edit
+          </button>
+        </td>
+        <td>
+          <button
+            color="accent"
+            mat-raised-button
+            (click)="deleteaddress(this.address.addressid)"
+          >
+            Delete
+          </button>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <button mat-raised-button color="primary" routerLink="/useraddressregister">
+    Add
+  </button>
+  <!--Including the pagination control.-->
+  <div class="text-right">
+    <pagination-controls (pageChange)="pagenum = $event"></pagination-controls>
+  </div>
+</div>

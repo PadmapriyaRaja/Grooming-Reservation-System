@@ -1,0 +1,29 @@
+.mainDiv .img{
+    opacity: 75%;
+    padding: 10rem;
+    object-fit: contain;
+    background-repeat:no-repeat;
+    background-size:100% 100vh;
+   
+    
+}
+.background-image {
+    /* background-image: url('path/to/your/image.jpg'); */
+    background-size: cover; 
+    background-repeat:no-repeat;
+    background-size:100% 100vh;
+}
+
+.serviceDiv{
+    padding: 2rem;
+}
+p {
+    color: white;
+    -webkit-text-fill-color: black; 
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+ }
+
+ .linespacing{
+    line-height: 30px;
+ }

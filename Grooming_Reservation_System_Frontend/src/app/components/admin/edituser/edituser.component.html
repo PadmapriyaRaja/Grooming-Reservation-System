@@ -1,0 +1,166 @@
+<div class="card">
+  <div class="card-body p-5">
+    <h2 class="text-uppercase text-center mb-5">Edit User</h2>
+
+    <form (ngSubmit)="!userForm.invalid && saveUser()" #userForm="ngForm">
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg">FIRST NAME</label>
+        <input
+          type="text"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="firstname"
+          minlength="3"
+          required
+          #firstname="ngModel"
+          [(ngModel)]="user.userfirstname"
+          pattern="^[A-Za-z]+$"
+        />
+        <div
+          *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+        >
+          <div *ngIf="firstname.errors?.['required']">
+            firstname is required
+          </div>
+
+          <div *ngIf="firstname.errors?.['minlength']">
+            firstname should have atleast 4 chars
+          </div>
+
+          <div *ngIf="firstname.errors?.['pattern']">
+            firstname should have only alphabets
+          </div>
+        </div>
+        <label class="form-label" for="form3Example1cg">LAST NAME</label>
+        <input
+          type="text"
+          id="form3Example5cg"
+          class="form-control form-control-lg"
+          name="lastname"
+          minlength="4"
+          required
+          #lastname="ngModel"
+          [(ngModel)]="user.userlastname"
+          pattern="^[A-Za-z]+$"
+        />
+        <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+          <div *ngIf="lastname.errors?.['required']">lastname is required</div>
+
+          <div *ngIf="lastname.errors?.['minlength']">
+            lastname should have atleast 4 chars
+          </div>
+
+          <div *ngIf="lastname.errors?.['pattern']">
+            lastname should have only alphabets
+          </div>
+        </div>
+      </div>
+
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example3cg">EMAIL ID</label>
+        <input
+          type="email"
+          id="form3Example3cg"
+          class="form-control form-control-lg"
+          name="emailid"
+          maxlength="30"
+          required
+          #emailid="ngModel"
+          [(ngModel)]="user.useremail"
+          pattern="^[a-zA-Z]{1}[a-zA-Z0-9.\-_]*@[a-zA-Z]{1}[a-zA-Z.-]*[a-zA-Z]{1}[.][a-zA-Z]{2,}$"
+        />
+        <div *ngIf="emailid.invalid && (emailid.dirty || emailid.touched)">
+          <div *ngIf="emailid.errors?.['required']">emailid is required</div>
+
+          <div *ngIf="emailid.errors?.['maxlength']">
+            emailid max length should be less than 30
+          </div>
+
+          <div *ngIf="emailid.errors?.['pattern']">emailid is invalid</div>
+        </div>
+      </div>
+
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example4cg">MOBILE NUMBER</label>
+        <input
+          type="text"
+          id="form3Example4cg"
+          class="form-control form-control-lg"
+          name="mobilenumber"
+          maxlength="10"
+          required
+          #mobilenumber="ngModel"
+          [(ngModel)]="user.userphonenumber"
+          pattern="^[6-9]\d{9}$"
+        />
+        <div
+          *ngIf="
+            mobilenumber.invalid && (mobilenumber.dirty || mobilenumber.touched)
+          "
+        >
+          <div *ngIf="mobilenumber.errors?.['required']">
+            mobilenumber is required
+          </div>
+
+          <div *ngIf="mobilenumber.errors?.['pattern']">
+            Invalid mobilenumber
+          </div>
+
+          <div *ngIf="mobilenumber.errors?.['maxlength']">
+            mobilenumber should have atleast 10 digits
+          </div>
+        </div>
+      </div>
+
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example4cdg">PASSWORD</label>
+        <input
+          type="password"
+          id="form3Example4cdg"
+          class="form-control form-control-lg"
+          name="password"
+          minlength="5"
+          maxlength="20"
+          required
+          #password="ngModel"
+          [(ngModel)]="user.userpassword"
+          pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+        />
+        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+          <div *ngIf="password.errors?.['required']">Password is required</div>
+
+          <div *ngIf="password.errors?.['minlength']">
+            Password should have atleast 5 character and less than 20 character
+          </div>
+
+          <div *ngIf="password.errors?.['pattern']">
+            Password should have one uppercase ,one lowercase,one special
+            character and number
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="form-check d-flex justify-content-center mb-5">
+        <input
+          class="form-check-input me-2"
+          type="checkbox"
+          value=""
+          id="TCCheckbox"
+        />
+        <label class="form-check-label" for="form2Example3g">
+          I agree all statements in
+          <a href="#!" class="text-body"><u>Terms of service</u></a>
+        </label>
+      </div> -->
+      <br />
+      <div class="d-flex justify-content-center">
+        <button
+          type="submit"
+          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

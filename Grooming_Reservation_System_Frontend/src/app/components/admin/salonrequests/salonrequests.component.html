@@ -1,0 +1,110 @@
+<div class="h-100">
+  <div>
+    <h1 class="tabletitle">Salon Applications</h1>
+  </div>
+  <div class="tablediv">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Salon ID</th>
+          <th scope="col">Salon Name</th>
+          <th scope="col">Salon Description</th>
+          <th scope="col">Salon Opening Hours</th>
+          <th scope="col">Salon Email</th>
+          <th scope="col">Salon Phone</th>
+          <th scope="col">Salon Address</th>
+          <th scope="col">Salon Pincode</th>
+          <th scope="col">Salon Rating</th>
+          <th scope="col">Salon State</th>
+          <th scope="col">Salon Status</th>
+          <th scope="col">Salon Password</th>
+          <th>Approve</th>
+          <th>Delete Salon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container
+          *ngFor="
+            let salon of salons
+              | paginate
+                : { itemsPerPage: recordsPerPage, currentPage: pagenum }
+          "
+        >
+          <!-- <tr
+          *ngFor="
+            let salon of salons
+              | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum }
+          "
+        > -->
+          <tr *ngIf="salon.salonstatus == 'Applied'">
+            <td scope="col">{{ salon.salonid }}</td>
+            <td scope="col">{{ salon.salonname }}</td>
+            <td scope="col">{{ salon.salondescription }}</td>
+            <td scope="col">{{ salon.salonopeninghours }}</td>
+            <td scope="col">{{ salon.salonemailid }}</td>
+            <td scope="col">{{ salon.salonphone }}</td>
+            <td scope="col">{{ salon.salonaddress }}</td>
+            <td scope="col">{{ salon.salonpincode }}</td>
+            <td scope="col">{{ salon.salonrating }}</td>
+            <td scope="col">{{ salon.salonstate }}</td>
+            <td scope="col">{{ salon.salonstatus }}</td>
+            <td scope="col">{{ salon.salonpassword }}</td>
+            <td>
+              <i class="bi bi-check">
+                <button
+                  color="primary"
+                  mat-raised-button
+                  (click)="approveSalon(this.salon.salonid, this.salon)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"
+                    />
+                  </svg></button
+              ></i>
+            </td>
+            <td>
+              <i class="bi bi-trash"
+                ><button
+                  color="accent"
+                  mat-raised-button
+                  (click)="deleteSalon(this.salon.salonid, this.salon)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-trash"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"
+                    />
+                    <path
+                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"
+                    />
+                  </svg>
+                </button>
+              </i>
+            </td>
+            <td></td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <!--Including the pagination control.-->
+    <div class="text-right">
+      <pagination-controls
+        (pageChange)="pagenum = $event"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>

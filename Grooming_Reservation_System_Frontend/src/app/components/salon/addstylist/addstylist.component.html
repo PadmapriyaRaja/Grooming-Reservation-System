@@ -1,0 +1,224 @@
+<section
+  class="vh-100 bg-image"
+  style="
+    background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');
+  "
+>
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">REGISTER STYLIST</h2>
+
+              <form
+                (ngSubmit)="!stylistForm.invalid && addstylist()"
+                #stylistForm="ngForm"
+              >
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="form3Example1cg"
+                    >FIRST NAME</label
+                  >
+                  <input
+                    type="text"
+                    id="form3Example1cg"
+                    class="form-control form-control-lg"
+                    name="firstname"
+                    minlength="3"
+                    required
+                    #firstname="ngModel"
+                    [(ngModel)]="stylist.firstname"
+                    pattern="^[A-Za-z]+$"
+                  />
+                  <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                    <div *ngIf="firstname.errors?.['required']">
+                      firstname is required
+                    </div>
+                    <div *ngIf="firstname.errors?.['minlength']">
+                      firstname should have atleast 4 chars
+                    </div>
+
+                    <div *ngIf="firstname.errors?.['pattern']">
+                      firstname should have only alphabets
+                    </div>
+                  </div>
+                  
+                  <label class="form-label" for="form3Example1cg"
+                    >LAST NAME</label
+                  >
+                  <input
+                    type="text"
+                    id="form3Example5cg"
+                    class="form-control form-control-lg"
+                    name="lastname"
+                    minlength="4"
+                    required
+                    #lastname="ngModel"
+                    [(ngModel)]="stylist.lastname"
+                    pattern="^[A-Za-z]+$"
+                  />
+                  <div
+                    *ngIf="
+                      lastname.invalid && (lastname.dirty || lastname.touched)
+                    "
+                  >
+                    <div *ngIf="lastname.errors?.['required']">
+                      lastname is required
+                    </div>
+
+                    <div *ngIf="lastname.errors?.['minlength']">
+                      lastname should have atleast 4 chars
+                    </div>
+
+                    <div *ngIf="lastname.errors?.['pattern']">
+                      lastname should have only alphabets
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example4cg"
+                      >PHONE NUMBER</label
+                    >
+                    <input
+                      type="text"
+                      id="form3Example4cg"
+                      class="form-control form-control-lg"
+                      name="mobilenumber"
+                      maxlength="10"
+                      required
+                      #mobilenumber="ngModel"
+                      [(ngModel)]="stylist.stylistphonenum"
+                      pattern="^[6-9]\d{9}$"
+                    />
+                    <div
+                      *ngIf="
+                        mobilenumber.invalid &&
+                        (mobilenumber.dirty || mobilenumber.touched)
+                      "
+                    >
+                      <div *ngIf="mobilenumber.errors?.['required']">
+                        Phonenumber is required
+                      </div>
+  
+                      <div *ngIf="mobilenumber.errors?.['pattern']">
+                        Invalid Phonenumber
+                      </div>
+  
+                      <div *ngIf="mobilenumber.errors?.['maxlength']">
+                        Phonenumber should have atleast 10 digits
+                      </div>
+                    </div>
+                  </div>
+  
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="form3Example3cg"
+                    >EMAIL ID</label
+                  >
+                  <input
+                    type="email"
+                    id="form3Example3cg"
+                    class="form-control form-control-lg"
+                    name="emailid"
+                    maxlength="30"
+                    required
+                    #emailid="ngModel"
+                    [(ngModel)]="stylist.stylistemail"
+                    pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}"
+                  />
+                  <div
+                    *ngIf="
+                      emailid.invalid && (emailid.dirty || emailid.touched)
+                    "
+                  >
+                    <div *ngIf="emailid.errors?.['required']">
+                      emailid is required
+                    </div>
+
+                    <div *ngIf="emailid.errors?.['maxlength']">
+                      emailid max length should be less than 30
+                    </div>
+
+                    <div *ngIf="emailid.errors?.['pattern']">
+                      emailid is invalid
+                    </div>
+                  </div>
+                </div>
+
+                
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example1cg">
+                      STYLIST SPECIALIZATION
+                    </label>
+                    <input
+                      type="text"
+                      id="form3Example1cg"
+                      class="form-control form-control-lg"
+                      name="stylistspecialization"
+                      required
+                      #stylistspecialization="ngModel"
+                      [(ngModel)]="stylist.stylistspecialization"
+                    />
+                    <div
+                      *ngIf="
+                        stylistspecialization.invalid &&
+                        (stylistspecialization.dirty || stylistspecialization.touched)
+                      "
+                    >
+                      <div *ngIf="stylistspecialization.errors?.['required']">
+                        stylistspecialization is required
+                      </div>
+                      
+                    </div>
+                  </div>
+  
+                  <!--slaon rating-->
+                   <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example1cg">
+                      STYLIST RATING
+                    </label>
+                    <input
+                      type="text"
+                      id="form3Example1cg"
+                      class="form-control form-control-lg"
+                      name="stylistrating"
+                      maxlength="5"
+                      required
+                      #stylistrating="ngModel"
+                      [(ngModel)]="stylist.stylistrating"
+                    />
+                    <div
+                      *ngIf="
+                      stylistrating.invalid &&
+                        (stylistrating.dirty || stylistrating.touched)
+                      "
+                    >
+                      <div *ngIf="stylistrating.errors?.['required']">
+                        stylistrating is required
+                      </div>
+                      <div *ngIf="stylistrating.errors?.['maxlength']">
+                        stylistrating can have atmost 5 chars
+                      </div>
+                    </div>
+                  </div> 
+  
+
+                <div class="d-flex justify-content-center">
+                  <button
+                    type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                  >
+                    Add
+                  </button>
+                </div>
+
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

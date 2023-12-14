@@ -1,0 +1,31 @@
+<div class="containr text-align-center h-100" style="padding: 2rem">
+  <div class="">
+    <h1 class="tabletitle">ALl Appointments</h1>
+  </div>
+  <div class="tablediv">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Appointment ID</th>
+          <th scope="col">User ID</th>
+          <th scope="col">Salon ID</th>
+          <th scope="col">Stylist ID</th>
+          <th scope="col">Appointment Date</th>
+          <th scope="col">Appointment Time</th>
+          <th scope="col">Appointment Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of appointments">
+          <td>{{ appointment.appointmentId }}</td>
+          <td>{{ appointment.user.userid }}</td>
+          <td>{{ appointment.salon.salonid }}</td>
+          <td>{{ appointment.stylist.stylistid }}</td>
+          <td>{{ appointment.appointmentDate }}</td>
+          <td>{{ appointment.appointmentTime }}</td>
+          <td>{{ appointment.appointmentType }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

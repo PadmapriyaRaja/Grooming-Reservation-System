@@ -1,0 +1,183 @@
+<!-- <app-navbar></app-navbar> -->
+<main class="flex-shrink-0">
+  <!-- Header-->
+  <header class="py-5" style="background-color: #f2f2f2">
+    <div class="container px-5">
+      <div class="row gx-5 align-items-center justify-content-center">
+        <div class="col-lg-8 col-xl-7 col-xxl-6">
+          <div class="my-5 text-center text-xl-start">
+            <h1 class="display-5 fw-bolder text-black mb-2">
+              <h1>
+                <p>Welcome to {{ salon.salonname }}</p>
+              </h1>
+            </h1>
+            <p class="lead text-white-50 mb-4 linespacing">
+              {{ salon.salondescription }}
+            </p>
+            <div
+              class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start"
+            >
+              <button
+                mat-raised-button
+                color="primary"
+                routerLink="/salonpage/{{ salonid }}"
+                fragment="services"
+              >
+                Show Services
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                routerLink="/salonpage/sercvices"
+              >
+                Show Stylists
+              </button>
+              <button
+                mat-raised-button
+                color="accent"
+                (click)="OnselectSalon(this.salon.salonid)"
+              >
+                Book Appointment
+
+                <!-- <a href="#" class="card-link">Another link</a> -->
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+          <img
+            class="img-fluid rounded-3 my-5"
+            src="{{ salon.salonpicurl }}"
+            alt="ServicePic"
+          />
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container serviceDiv" id="sercvices">
+    <div class="col py-3">
+      <!-- Display salon Cards -->
+
+      <div
+        class="row gx-3 gx-lg-3 row-cols-4 row-cols-md-4 row-cols-xl-4 justify-content-center"
+      >
+        <section
+          *ngFor="
+            let service of services
+              | paginate : { itemsPerPage: count, currentPage: p }
+          "
+          style="padding: 2rem"
+        >
+          <div class="card" style="width: 18rem; height: 28rem; padding: 1rem">
+            <img
+              class="card-img-top"
+              src="{{ salon.salonpicurl }}"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <p class="card-text">
+                {{ service.servicesdescription }}
+              </p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ service.servicesname }}</li>
+                <li class="list-group-item">
+                  Available for: <b> {{ service.servicesgendertype }}</b>
+                </li>
+                <li class="list-group-item">
+                  <b
+                    >Price:
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-currency-rupee"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z"
+                      />
+                    </svg>
+
+                    {{ service.servicesprice }}
+                  </b>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="paginationControls">
+        <div class="text-right">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+      <!-- Stylists -->
+      <div
+        class="row gx-3 gx-lg-3 row-cols-4 row-cols-md-4 row-cols-xl-4 justify-content-center"
+      >
+        <section
+          *ngFor="
+            let stylist of stylists
+              | paginate : { itemsPerPage: count, currentPage: p }
+          "
+          style="padding: 2rem"
+        >
+          <div class="card" style="width: 18rem; height: 28rem; padding: 1rem">
+            <img
+              class="card-img-top"
+              src="{{ salon.salonpicurl }}"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <p class="card-text">
+                {{ stylist.firstname }}
+              </p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Stylist Specialization:
+                  <b> {{ stylist.stylistspecialization }}</b>
+                </li>
+                <li class="list-group-item">
+                  Stylist Rating: <b> {{ stylist.stylistrating }}</b>
+                </li>
+                <!-- <li class="list-group-item">
+                  <b>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-currency-rupee"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z"
+                      />
+                    </svg>
+                   {{ stylist.servicesprice }}
+                  </b>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="paginationControls">
+        <div class="text-right">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="col-12 text-right" style="padding-left: 60rem">
+            <button mat-raised-button color="accent">Book Appointment</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</main>
+<!-- <app-footer></app-footer> -->

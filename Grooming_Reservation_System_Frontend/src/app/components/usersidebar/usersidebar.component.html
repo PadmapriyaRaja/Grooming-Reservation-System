@@ -1,0 +1,33 @@
+<div
+  class="sidebarColor d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+>
+  <span
+    class="fs-5 d-none d-sm-inline text-black bg-White"
+    style="padding-bottom: 2rem"
+    ><b> Menu</b></span
+  >
+
+  <ul
+    class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start text-black"
+    id="menu"
+  >
+    <li style="padding-bottom: 1rem">
+      <button color="primary" mat-raised-button routerLink="/viewallsalon">
+        All Salons
+      </button>
+    </li>
+    <li class="nav-item text-black">
+      <a
+        class="nav-link align-middle px-0"
+        style="padding: 1rem"
+        *ngFor="let salonCategory of categories"
+        onclick="getSalonByCategory(salonCategory)"
+      >
+        <button color="primary" mat-raised-button>
+          {{ salonCategory }}
+        </button>
+      </a>
+    </li>
+  </ul>
+  <hr />
+</div>

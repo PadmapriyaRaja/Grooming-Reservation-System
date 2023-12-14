@@ -1,0 +1,125 @@
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .gradient-custom-2 {
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+    }
+}
+
+.card-container-left{
+    padding: 0 2rem;
+}
+
+.loginDivBackground {
+    background-image: url("/assets/barber1.jpg"), url("/assets/barber2.jpg"), url("/assets/barber7.jpg");
+    background-size: contain;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: left top, center, right, right;
+}
+
+.chromacuts-logoname{
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.login-form-container{
+    font-size: 16px;
+    /*font-family: 'PT Serif', serif;*/
+}
+
+.form-outline{
+    margin-bottom: 10px !important;
+}
+
+.form-content{
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    padding: 2% 5%;
+}
+
+.error-message{
+    color: red;
+    font-size: 13px;
+    margin: 0;
+}
+
+.chroma-info-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.chroma-info {
+    font-family: 'Playfair Display', serif;
+    font-weight: 200;
+    font-size: 18px;
+    font-style: italic;
+    letter-spacing: 0.3px;
+}
+
+/*Button*/
+.login-button {
+    border-radius: 4px;
+    background-color: #e15c86;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: px;
+    padding: 8px;
+    width: 120px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 36px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .7);
+}
+
+.login-button {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.login-button:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 7px;
+    right: -18px;
+    transition: 0.5s;
+}
+
+.login-button:hover {
+    padding-right: 24px;
+    padding-left: 8px;
+}
+
+.login-button:hover:after {
+    opacity: 1;
+    right: 10px;
+}
+
+
+.register-button{
+    font-family: 'Playfair Display',serif;
+    letter-spacing: 0.7px;
+}

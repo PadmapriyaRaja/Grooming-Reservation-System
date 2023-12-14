@@ -1,0 +1,39 @@
+<div class="appointmentContainer h-100">
+  <div>
+    <h1 class="tabletitle">{{ salonname }}'s Appointments</h1>
+  </div>
+  <div class="tablediv">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Appointment ID</th>
+          <th scope="col">User ID</th>
+          <th scope="col">Stylist ID</th>
+          <th scope="col">Appointment Date</th>
+          <th scope="col">Appointment Time</th>
+          <th scope="col">Appointment Type</th>
+          <th scope="col">Appointment Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let appointment of appointments
+              | paginate : { itemsPerPage: count, currentPage: p }
+          "
+        >
+          <td>{{ appointment.appointmentId }}</td>
+          <td>{{ appointment.user.userid }}</td>
+          <td>{{ appointment.stylist.stylistid }}</td>
+          <td>{{ appointment.appointmentDate }}</td>
+          <td>{{ appointment.appointmentTime }}</td>
+          <td>{{ appointment.appointmentType }}</td>
+          <td>{{ appointment.appointmentStatus }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

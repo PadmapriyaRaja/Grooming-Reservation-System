@@ -1,0 +1,171 @@
+<!-- <p>viewallsalon works!</p>
+<div>
+    <h1 class="tabletitle">All Registered User Data</h1>
+  </div>
+  <div class="tablediv">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          
+          <th scope="col">Service Name</th>
+          <th scope="col">Service Description</th>
+          <th scope="col">Service price</th>
+          <th scope="col">Service gendertype</th>
+         
+         
+        
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let service of service
+              | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum } " >
+         
+          <td scope="col">{{ service.servicesname }}</td>
+          <td scope="col">{{ service.servicesdescription }}</td>
+          <td scope="col">{{ service.servicesprice }}</td>
+          <td scope="col">{{ service.servicesgendertype }}</td>
+       
+         
+            
+          <td></td>
+        </tr>
+      </tbody>
+    </table> -->
+<!--Including the pagination control.
+    <div class="text-right">
+      <pagination-controls (pageChange)="pagenum = $event"></pagination-controls>
+    </div>
+  </div>-->
+
+<!--New Checkbox Method
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Checkboxes</th>
+          <th scope="col">Services</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of services">
+          <th scope="row">
+            <input class="form-check-input" type="checkbox" [value]="service.servicesid"
+              [checked]="selectedServices.includes(service.servicesid)" (change)="toggleService(service.servicesid)">
+          </th>
+          <td>{{ service.servicesname }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit" (click)="Onsubmit()">Submit</button>
+  </div>
+
+-->
+
+<!-- <app-navbar></app-navbar> -->
+
+<section class="viewallservice bg-pink-light px-4 py-4 px-lg-5 py-lg-5 h-100">
+  <div class="allWrapper pb-2">
+    <div class="container px-1 px-lg-2">
+      <h2 class="section-title text-playfair mb-4">Our Salon's Services</h2>
+      <span class="section-subtitle">Creating Beauty Beyond Boundaries</span>
+    </div>
+
+    <section class="quiz_section" id="quizSection">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="quiz_content_area">
+              <div class="row">
+                <!--Card-->
+
+                <!-- end of col3  -->
+                <!--Remove the above card when displaying the services-->
+
+                <!--Card2-->
+                <div class="col-sm-3" *ngFor="let service of services">
+                  <div class="quiz_card_area">
+                    <input
+                      class="quiz_checkbox form-check-input"
+                      type="checkbox"
+                      id="2"
+                      value="2"
+                      [value]="service.servicesid"
+                      [checked]="selectedServices.includes(service.servicesid)"
+                      (change)="toggleService(service.servicesid)"
+                    />
+
+                    <div class="single_quiz_card">
+                      <div class="quiz_card_content">
+                        <div class="quiz_card_icon">
+                          <img
+                            class="quiz_icon"
+                            src="/assets/barber2.jpg"
+                            alt="service-image"
+                          />
+                        </div>
+                        <!-- end of quiz_card_media -->
+                        <div>
+                          <div class="quiz_card_title">
+                            <h3>
+                              <i class="fa fa-check" aria-hidden="true"></i>
+                              {{ service.servicesname }}
+                            </h3>
+                          </div>
+                          <div class="quiz_card_title">
+                            <h3>
+                              <i class="fa fa-check" aria-hidden="true"></i>
+                              Price:
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="bi bi-currency-rupee"
+                                viewBox="0 0 16 16"
+                              >
+                                <path
+                                  d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z"
+                                />
+                              </svg>
+                              {{ service.servicesprice }}
+                            </h3>
+                          </div>
+                        </div>
+                        <!-- end of quiz_card_title -->
+                      </div>
+                      <!-- end of quiz_card_content -->
+                    </div>
+                    <!-- end of single_quiz_card -->
+                  </div>
+                  <!-- end of quiz_card_area -->
+                </div>
+                <!-- end of col3  -->
+              </div>
+              <!-- end of quiz_card_area -->
+            </div>
+            <!-- end of quiz_content_area -->
+          </div>
+          <!-- end of col12 -->
+
+          <div class="col-sm-12">
+            <div class="quiz_next">
+              <button type="submit" (click)="Onsubmit()" class="button-87">
+                Continue
+              </button>
+            </div>
+            <!-- end of quiz_next -->
+          </div>
+          <!-- end of col12 -->
+        </div>
+        <!-- end of row -->
+      </div>
+      <!-- end of container -->
+    </section>
+    <!-- end of quiz_section -->
+  </div>
+  <!-- end of allWrapper -->
+</section>
+
+<!-- <app-footer></app-footer> -->

@@ -1,0 +1,189 @@
+#mainNav {
+    background-color: rgb(255,255,255, 0.4);
+    transition: background-color 0.5s ease;
+}
+
+#mainNav a.nav-link,
+#mainNav button.nav-link {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+}
+
+#mainNav a.nav-link:hover,
+#mainNav button.nav-link:hover {
+    color: #fca2a5;
+    transition: 0.3s;
+}
+
+#mainNav .navbar-scrolled {
+    background-color: #dd3675;
+}
+
+li {
+    float: right;
+    padding: 0.5rem;
+}
+
+li a,
+li button {
+    font-size: 18px;
+    display: block;
+    text-align: center;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+
+/*Playfair Text*/
+.text-playfair {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif !important;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Button */
+.dropdown-btn {
+    font-family: 'Playfair Display', serif;
+    background-color: transparent;
+    /* Set to transparent */
+    color: white;
+    /* Text color */
+    padding: 10px 16px;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    font-family: 'Playfair Display', serif;
+    margin-top: 5px;
+    margin-left: 2px;
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    /* Set to transparent */
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    padding-top: 10px;
+    z-index: 1;
+}
+
+/* Links inside the Dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 10px 22px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color on hover */
+.dropdown-content a:hover {
+    background-color: rgb(255, 255, 255, 0.3);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*-------------------------------*/
+
+/*LogoName*/
+.chromacuts-logoname {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff !important;
+}
+
+/*-------------------------------------------------------------*/
+
+footer {
+    background-color: #333;
+    font-size: 80%;
+    padding: 50px;
+  }
+  
+  footer p {
+    color: #888;
+    text-align: center;
+    font-size: 90%;
+    margin-top: 20px;
+  }
+  
+  .footer-nav {
+    list-style: none;
+    float: left;
+  }
+  
+  .footer-social-links {
+    list-style: none;
+    float: right;
+  }
+  
+  .footer-nav li,
+  .footer-social-links li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .footer-nav li a:link,
+  .footer-nav li a:visited,
+  .footer-social-links li a:active,
+  .footer-social-links li a:visited {
+    text-decoration: none;
+    border: 0;
+    color: #888;
+  }
+  
+  .footer-nav li a:hover,
+  .footer-nav li a:hover {
+    color: #ddd
+  }
+  
+  .google:hover {
+    color: #d94a37;
+  }
+  
+  .twitter:hover {
+    color: #00aced
+  }
+  
+  .youtube:hover {
+    color: #e60000;
+  }
+  
+  .footer-social-links li,
+  .footer-social-links li {
+    font-size: 2rem;
+    margin-right: 2.25rem;
+    color:#999999;
+  }
+  
+  .copyright{
+    font-size: 1rem;
+  }
+  
+  /*-----------Custom Gradient------------------*/
+  .gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #b44593, #dd3675, #d8363a, #ee7724);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #b44593, #dd3675, #d8363a, #ee7724);
+  }

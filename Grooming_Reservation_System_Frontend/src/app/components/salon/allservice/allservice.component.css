@@ -1,0 +1,12 @@
+.tablediv{
+    margin: 2rem 2rem 2rem 2rem;
+}
+
+.tabletitle{
+    margin-top: 2rem;
+    text-align: center;
+}
+.mat-raised-button-success {
+  color: #f0fff3;
+  background-color: #09b130;
+}

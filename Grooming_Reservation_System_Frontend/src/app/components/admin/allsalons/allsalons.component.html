@@ -1,0 +1,150 @@
+<div class="h-400">
+  <div class="tablediv">
+    <h1 class="tabletitle">All Salons</h1>
+
+    <table class="table">
+      <tr>
+        <td>
+          <mat-form-field>
+            <mat-label>Select salon status</mat-label>
+            <mat-select
+              [(ngModel)]="selectedSalonStatus"
+              name="salonStatus"
+              (selectionChange)="onSalonStatusChange()"
+            >
+              <mat-option *ngFor="let status of salonStatus" [value]="status">
+                {{ status }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td class="right-align-container rightDiv">
+          <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()">
+            <mat-form-field>
+              <input
+                matInput
+                type="text"
+                placeholder="Salon Name"
+                formControlName="searchValue"
+              />
+            </mat-form-field>
+            <br />
+            <button color="primary" mat-raised-button>search</button>
+          </form>
+          <tr></tr>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="tablediv">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <!-- <th scope="col">Salon ID</th> -->
+          <th scope="col">Salon Name</th>
+          <th scope="col">Salon Description</th>
+          <th scope="col">Salon Opening Hours</th>
+          <th scope="col">Salon Email</th>
+          <th scope="col">Salon Phone</th>
+          <th scope="col">Salon Address</th>
+          <th scope="col">Salon Pincode</th>
+          <th scope="col">Salon Rating</th>
+          <th scope="col">Salon City</th>
+          <th scope="col">Salon State</th>
+          <th scope="col">Salon Category</th>
+          <th scope="col">Salon Status</th>
+          <th scope="col">Salon Appointments</th>
+
+          <!-- <th scope="col">Salon Password</th> -->
+          <th>Edit Salon</th>
+          <th>Delete Salon</th>
+          <th scope="col">Go to SalonPage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container
+          *ngFor="
+            let salon of salons
+              | paginate : { itemsPerPage: count, currentPage: p }
+          "
+        >
+          <!-- <tr
+        *ngFor="
+          let salon of salons
+            | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum }
+        "
+      > -->
+          <!-- <tr *ngIf="salon.salonstatus == 'Approved'"> -->
+          <tr>
+            <!-- <td scope="col">{{ salon.salonid }}</td> -->
+            <td scope="col">{{ salon.salonname }}</td>
+            <td scope="col">{{ salon.salondescription }}</td>
+            <td scope="col">{{ salon.salonopeninghours }}</td>
+            <td scope="col">{{ salon.salonemailid }}</td>
+            <td scope="col">{{ salon.salonphone }}</td>
+            <td scope="col">{{ salon.salonaddress }}</td>
+            <td scope="col">{{ salon.salonpincode }}</td>
+            <td scope="col">{{ salon.salonrating }}</td>
+            <td scope="col">{{ salon.saloncity }}</td>
+            <td scope="col">{{ salon.salonstate }}</td>
+            <td scope="col">{{ salon.saloncategory }}</td>
+            <td scope="col">{{ salon.salonstatus }}</td>
+            <!-- <td scope="col">{{ salon.salonpassword }}</td> -->
+            <td>
+              <button
+                color="primary"
+                mat-raised-button
+                (click)="getAllAppointmentsBySalonId(this.salon)"
+              >
+                Appointments
+              </button>
+            </td>
+            <td>
+              <button
+                color="primary"
+                mat-raised-button
+                (click)="editSalon(this.salon.salonid)"
+              >
+                Edit
+              </button>
+            </td>
+            <div *ngIf="salon.salonstatus === 'Disabled'; else showEnable">
+              <td>
+                <button
+                  color="primary"
+                  mat-raised-button
+                  (click)="enableSalon(this.salon.salonid, this.salon)"
+                >
+                  Enable
+                </button>
+              </td>
+            </div>
+            <ng-template #showEnable>
+              <td>
+                <button
+                  color="accent"
+                  mat-raised-button
+                  (click)="disableSalon(this.salon.salonid, this.salon)"
+                >
+                  Disable
+                </button>
+              </td>
+            </ng-template>
+            <td>
+              <button
+                routerLink="/salonpage/{{ salon.salonid }}"
+                mat-raised-button
+              >
+                View
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <!--Including the pagination control.-->
+    <div class="text-right">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

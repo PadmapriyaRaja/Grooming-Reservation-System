@@ -1,0 +1,126 @@
+<div class="card">
+  <div class="card-body p-5">
+    <h2 class="text-uppercase text-center mb-5">Appointment Details</h2>
+    <form #appointmentForm="ngForm">
+      <!--Appointment Id-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg">APPOINTMENT ID</label>
+        <input
+          type="text"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="appointmentId"
+          disabled
+          #appointmentId="ngModel"
+          [(ngModel)]="appointment.appointmentId"
+        />
+      </div>
+      
+      <!--Appointment Date-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg">APPOINTMENT DATE</label>
+        <input
+          type="text"
+          id="form3Example5cg"
+          class="form-control form-control-lg"
+          name="appointmentDate"
+          disabled
+          #appointmentDate="ngModel"
+          [(ngModel)]="appointment.appointmentDate"
+        />
+      </div>
+
+      <!--Appointment Time-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example3cg">APPOINTMENT TIME</label>
+        <input
+          type="email"
+          id="form3Example3cg"
+          class="form-control form-control-lg"
+          name="appointmentTime"
+          disabled
+          #appointmentTime="ngModel"
+          [(ngModel)]="appointment.appointmentTime"
+        />
+      </div>
+
+      <!--Appointment Type-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example4cg">APPOINTMENT TYPE</label>
+        <input
+          type="text"
+          id="form3Example4cg"
+          class="form-control form-control-lg"
+          name="appointmentType"
+          disabled
+          #appointmentType="ngModel"
+          [(ngModel)]="appointment.appointmentType"
+        />
+      </div>
+
+      <!--salon name-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example4cdg">SALON NAME</label>
+        <input
+          type="text"
+          id="form3Example4cdg"
+          class="form-control form-control-lg"
+          name="salonname"
+          disabled
+          required
+          #salonname="ngModel"
+          [(ngModel)]="salon.salonname"
+        />
+      </div>
+
+
+     
+      <!--services name
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example4cdg">SERVICES NAME</label>
+        <input
+          type="text"
+          id="form3Example4cdg"
+          class="form-control form-control-lg"
+          name="servicesname"
+          disabled
+          #servicesname="ngModel"
+          [(ngModel)]="services.servicesname"
+        />
+      </div>-->
+
+      
+      
+
+      <!--stylist name-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example4cdg">STYLIST NAME</label>
+        <input
+          type="text"
+          id="form3Example4cdg"
+          class="form-control form-control-lg"
+          name="stylistname"
+          disabled
+          #stylistname="ngModel"
+          [(ngModel)]="stylist.firstname"
+        />
+      </div>
+    </form>
+     <!--services total price-->
+     <div>
+      <label><b>Total Amount</b></label>     
+       <h3><b>{{totalserviceprice}}</b></h3>
+     </div>
+    <div class="d-flex justify-content-center">
+      <!--<button
+            color="accent"
+            mat-raised-button
+           routerLink="/payment"
+          >
+            PayNow
+          </button>-->
+      <app-payment></app-payment>
+      
+    </div>
+  </div>
+</div>

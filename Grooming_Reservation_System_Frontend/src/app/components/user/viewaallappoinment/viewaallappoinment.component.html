@@ -1,0 +1,36 @@
+<div>
+  <h1 class="tabletitle">All Appoinment Data</h1>
+</div>
+<div class="tablediv">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">appointmentId</th>
+        <th scope="col">appointmentDate</th>
+        <th scope="col">appointmentTime</th>
+        <th scope="col">appointmentStatus</th>
+        <th scope="col">appointmentType</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let appointment of appointments
+            | paginate : { itemsPerPage: count, currentPage: p }
+        "
+      >
+        <td scope="col">{{ appointment.appointmentId }}</td>
+        <td scope="col">{{ appointment.appointmentDate }}</td>
+        <td scope="col">{{ appointment.appointmentTime }}</td>
+        <td scope="col">{{ appointment.appointmentStatus }}</td>
+        <td scope="col">{{ appointment.appointmentType }}</td>
+
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <!--Including the pagination control.-->
+  <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

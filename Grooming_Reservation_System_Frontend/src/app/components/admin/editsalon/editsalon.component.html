@@ -1,0 +1,451 @@
+<div class="card" style="border-radius: 15px">
+  <div class="card-body p-5">
+    <h2 class="text-uppercase text-center mb-5">Edit Salon</h2>
+
+    <form
+      (ngSubmit)="!salonForm.invalid && salonregister()"
+      #salonForm="ngForm"
+    >
+      <!--salonname-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg"> SALON NAME </label>
+        <input
+          type="text"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="salonname"
+          minlength="4"
+          required
+          #salonname="ngModel"
+          [(ngModel)]="salon.salonname"
+          pattern="[a-zA-Z][a-zA-Z ]+"
+        />
+        <div
+          *ngIf="salonname.invalid && (salonname.dirty || salonname.touched)"
+        >
+          <div *ngIf="salonname.errors?.['required']">
+            salonname is required
+          </div>
+          <div *ngIf="salonname.errors?.['minlength']">
+            salonname should have atleast 4 chars
+          </div>
+
+          <div *ngIf="salonname.errors?.['pattern']">
+            salonname should have only alphabets
+          </div>
+        </div>
+        <!--salonaddress-->
+        <label class="form-label" for="form3Example1cg">Salon Area</label>
+        <input
+          type="text"
+          id="form3Example5cg"
+          class="form-control form-control-lg"
+          name="salonaddress"
+          maxlength="200"
+          required
+          #salonaddress="ngModel"
+          [(ngModel)]="salon.salonaddress"
+        />
+
+        <div
+          *ngIf="
+            salonaddress.invalid && (salonaddress.dirty || salonaddress.touched)
+          "
+        >
+          <div *ngIf="salonaddress.errors?.['required']">
+            salon area is required
+          </div>
+          <div *ngIf="salonaddress.errors?.['maxlength']">
+            salon area should have atmost 200 chars
+          </div>
+        </div>
+      </div>
+
+      <!--salon Country-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example3cg">Salon Country </label>
+        <mat-select
+          (valueChange)="selectCountry($event)"
+          [(ngModel)]="saloncountry"
+          class="form-control"
+          name="country"
+        >
+          <mat-option value>Select Country</mat-option>
+          <mat-option
+            *ngFor="let country of countries"
+            [value]="country.name"
+            [attr.data-country-name]="country.name"
+            >{{ country.name }}
+          </mat-option>
+        </mat-select>
+      </div>
+      <!--salon State-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example3cg">Salon State </label>
+        <mat-select
+          (valueChange)="selectState($event)"
+          [(ngModel)]="salonstate"
+          class="form-control"
+          name="country"
+        >
+          <mat-option value>Select State</mat-option>
+          <mat-option
+            *ngFor="let state of states"
+            [value]="state.name"
+            [attr.data-state-name]="state.name"
+            >{{ state.name }}
+          </mat-option>
+        </mat-select>
+      </div>
+      <!--salon City-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example3cg">Salon City </label>
+        <mat-select
+          (valueChange)="setSalonCity($event)"
+          class="form-control"
+          name="city"
+          [(ngModel)]="saloncity"
+        >
+          <mat-option value class="form-control">Select City </mat-option>
+          <mat-option
+            *ngFor="let city of cities"
+            [value]="city.name"
+            [attr.data-city-name]="city.name"
+            >{{ city.name }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <!--salonpincode-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg"> Salon Pincode </label>
+        <input
+          type="text"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="salonpincode"
+          maxlength="6"
+          required
+          #salonpincode="ngModel"
+          [(ngModel)]="salon.salonpincode"
+          pattern="^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$"
+        />
+        <div
+          *ngIf="
+            salonpincode.invalid && (salonpincode.dirty || salonpincode.touched)
+          "
+        >
+          <div *ngIf="salonpincode.errors?.['required']">
+            salonpincode is required
+          </div>
+          <div *ngIf="salonpincode.errors?.['maxlength']">
+            salonpincode should have atleast 8 chars
+          </div>
+          <div *ngIf="salonpincode.errors?.['pattern']">
+            salonpincode should have only numbers
+          </div>
+        </div>
+      </div>
+
+      <!--salonphonenumber-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg">
+          SALON PHONENUMBER
+        </label>
+        <input
+          type="text"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="salonphone"
+          maxlength="10"
+          required
+          #salonphone="ngModel"
+          [(ngModel)]="salon.salonphone"
+          pattern="^[6-9]\d{9}$"
+        />
+        <div
+          *ngIf="salonphone.invalid && (salonphone.dirty || salonphone.touched)"
+        >
+          <div *ngIf="salonphone.errors?.['required']">
+            salonphonenumber is required
+          </div>
+          <div *ngIf="salonphone.errors?.['maxlength']">
+            salonphonenumber should have atleast 10 digits
+          </div>
+          <div *ngIf="salonphone.errors?.['pattern']">
+            salonphonenumber should have only numbers and phonenumber start from
+            6,7,8 or 9
+          </div>
+        </div>
+      </div>
+
+      <!--salonemail-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg"> SALON EMAIL </label>
+        <input
+          type="email"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="salonemailid"
+          maxlength="30"
+          required
+          #salonemailid="ngModel"
+          [(ngModel)]="salon.salonemailid"
+          pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}"
+        />
+        <div
+          *ngIf="
+            salonemailid.invalid && (salonemailid.dirty || salonemailid.touched)
+          "
+        >
+          <div *ngIf="salonemailid.errors?.['required']">
+            salonemailid is required
+          </div>
+          <div *ngIf="salonemailid.errors?.['maxlength']">
+            salonemailid can have atmost 30 chars
+          </div>
+          <div *ngIf="salonemailid.errors?.['pattern']">salonemail invalid</div>
+        </div>
+      </div>
+
+      <!--salon opening hours-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg">
+          Salon Buisnes Days
+        </label>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <mat-label>From</mat-label>
+              <mat-select
+                [(ngModel)]="selectedSalonBuisnesDayStart"
+                name="salonBuisnesDayStart"
+                (ngModelChange)="craeteDayString()"
+              >
+                <mat-option
+                  *ngFor="let salonBuisnesDay of salonBuisnesDaysStart"
+                  [value]="salonBuisnesDay"
+                >
+                  {{ salonBuisnesDay }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col"
+            *ngIf="selectedSalonBuisnesDayStart != 'Monday-Sunday'"
+          >
+            <mat-form-field>
+              <mat-label>To</mat-label>
+              <mat-select
+                [(ngModel)]="selectedSalonBuisnesDayEnd"
+                name="salonBuisnesDayEnd"
+                (ngModelChange)="craeteDayString()"
+              >
+                <mat-option
+                  *ngFor="let salonBuisnesDay of salonBuisnesDaysEnd"
+                  [value]="salonBuisnesDay"
+                  onchange=""
+                  ><div
+                    *ngIf="selectedSalonBuisnesDayStart != 'Monday - Sunday'"
+                  >
+                    {{ salonBuisnesDay }}
+                  </div>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg">
+          Salon Buisnes Hours
+        </label>
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <mat-label>From</mat-label>
+              <mat-select
+                [(ngModel)]="selectedSalonBuisnesHoursStart"
+                name="salonBuisnesDayStart"
+              >
+                <mat-option
+                  *ngFor="let SalonBuisnesHour of SalonBuisnesHours1"
+                  [value]="SalonBuisnesHour"
+                >
+                  {{ SalonBuisnesHour.title }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col">
+            <mat-form-field>
+              <mat-label>To</mat-label>
+              <mat-select
+                [(ngModel)]="selectedSalonBuisnesHoursEnd"
+                name="salonBuisnesDayEnd"
+                (ngModelChange)="createTimeString()"
+              >
+                <mat-option
+                  *ngFor="let SalonBuisnesHour of SalonBuisnesHours2"
+                  [value]="SalonBuisnesHour"
+                >
+                  {{ SalonBuisnesHour.title }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <!--salon description-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg">
+          SALON DESCRIPTION
+        </label>
+        <input
+          type="text"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="salondescription"
+          maxlength="255"
+          required
+          #salondescription="ngModel"
+          [(ngModel)]="salon.salondescription"
+        />
+        <div
+          *ngIf="
+            salondescription.invalid &&
+            (salondescription.dirty || salondescription.touched)
+          "
+        >
+          <div *ngIf="salondescription.errors?.['required']">
+            salondescription is required
+          </div>
+          <div *ngIf="salondescription.errors?.['maxlength']">
+            salondescription can have atmost 255 chars
+          </div>
+        </div>
+      </div>
+
+      <!--salon password-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg"> SALON PASSWORD </label>
+        <input
+          type="password"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="salonpassword"
+          minlength="8"
+          maxlength="20"
+          required
+          #salonpassword="ngModel"
+          [(ngModel)]="salon.salonpassword"
+          pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\S+$).{8,20}$"
+        />
+        <div
+          *ngIf="
+            salonpassword.invalid &&
+            (salonpassword.dirty || salonpassword.touched)
+          "
+        >
+          <div *ngIf="salonpassword.errors?.['required']">
+            salonpassword is required
+          </div>
+          <div *ngIf="salonpassword.errors?.['maxlength']">
+            salonpassword can have atmost 20 chars
+          </div>
+          <div *ngIf="salonpassword.errors?.['minlength']">
+            salonpassword can have atleast 8 chars
+          </div>
+          <div *ngIf="salonpassword.errors?.['pattern']">
+            salonpassword invalid , password should contain atleast one
+            lowercase,one uppercase,one special character,one numerical
+          </div>
+        </div>
+      </div>
+      <div class="form-outline mb-2" style="padding: 2rem">
+        <div class="row align-items-center">
+          <div class="col">
+            <label class="form-label" for="form3Example1cg">
+              Salon Category
+            </label>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>To</mat-label>
+              <mat-select [(ngModel)]="saloncategory" name="salonCategory">
+                <mat-option
+                  *ngFor="let salonCategory of salonCategories"
+                  [value]="salonCategory"
+                  onchange=""
+                >
+                  {{ salonCategory }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <!-- Salon Picture -->
+      <div class="form-outline mb-2" style="padding: 2rem">
+        <label class="form-label" for="form3Example1cg">
+          Enter url to Salon picture
+        </label>
+        <input
+          type="text"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="salondescription"
+          maxlength="255"
+          required
+          #salondescription="ngModel"
+          [(ngModel)]="salon.salonpicurl"
+        />
+        <div
+          *ngIf="
+            salondescription.invalid &&
+            (salondescription.dirty || salondescription.touched)
+          "
+        >
+          <div *ngIf="salondescription.errors?.['required']">
+            salondescription is required
+          </div>
+          <div *ngIf="salondescription.errors?.['maxlength']">
+            salondescription can have atmost 255 chars
+          </div>
+        </div>
+      </div>
+      <!--checkbox-->
+      <div class="form-check d-flex justify-content-center mb-5">
+        <input
+          class="form-check-input me-2"
+          type="checkbox"
+          value=""
+          id="form2Example3cg"
+        />
+        <label class="form-check-label" for="form2Example3g">
+          I agree all statements in
+          <a href="#!" class="text-body"><u>Terms of service</u></a>
+        </label>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button
+          type="submit"
+          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+        >
+          Register
+        </button>
+      </div>
+
+      <p class="text-center text-muted mt-5 mb-0">
+        Have already an account?
+        <a class="fw-bold text-body" (click)="loginBtn()"><u>Login here</u></a>
+      </p>
+    </form>
+  </div>
+</div>

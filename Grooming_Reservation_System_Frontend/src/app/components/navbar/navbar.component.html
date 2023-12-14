@@ -1,0 +1,96 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light gradient-custom-2"
+  id="mainNav"
+>
+  <div class="container px-4 px-lg-5">
+    <!-- Logo and Company Name on the left -->
+    <img
+      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+      style="width: 120px"
+      alt="logo"
+    />
+    <a class="navbar-brand chromacuts-logoname" href="#page-top">ChromaCuts</a>
+
+    <!-- Toggle Button for Small Screens -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      Menu <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Navigation Links on the right -->
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#services">Services</a>
+        </li>
+
+        <!-- Dropdown for Login/Signup -->
+        <section *ngIf="!isUserLoggedIn">
+          <section *ngIf="!isSalonLoggedIn">
+            <li class="nav-item dropdown">
+              <button *ngIf="!isUserLoggedIn" class="nav-link dropdown-btn">
+                Login
+              </button>
+              <div *ngIf="!isUserLoggedIn" class="dropdown-content">
+                <a routerLink="/login">User</a>
+                <a routerLink="/salonlogin">Salon</a>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown" *ngIf="!isUserLoggedIn">
+              <button class="nav-link dropdown-btn">Signup</button>
+              <div class="dropdown-content">
+                <a routerLink="/userregistration">User</a>
+                <a routerLink="/salonregistration">Salon</a>
+              </div>
+            </li>
+          </section>
+        </section>
+        <li class="nav-item" *ngIf="isUserLoggedIn">
+          <a class="nav-link" routerLink="/homepage" fragment="salons">
+            Salons</a
+          >
+        </li>
+        <li class="nav-item">
+          <button
+            *ngIf="isUserLoggedIn"
+            class="nav-link"
+            routerLink="/viewuser"
+          >
+            Profile
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            *ngIf="isUserLoggedIn"
+            class="nav-link"
+            (click)="userLogout()"
+          >
+            Logout
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            *ngIf="isSalonLoggedIn"
+            class="nav-link"
+            (click)="salonLogout()"
+          >
+            Logout
+          </button>
+        </li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,17 @@
+.tablediv{
+    margin: 2rem 2rem 2rem 2rem;
+}
+
+.tabletitle{
+    margin-top: 2rem;
+    text-align: center;
+}
+.right-align-container {
+    text-align: right;
+    position: absolute;right:0,;
+    
+  }
+
+  .rightDiv{
+    position: relative;right:0;
+}

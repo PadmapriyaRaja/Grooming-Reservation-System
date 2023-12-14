@@ -1,0 +1,66 @@
+<div>
+  <h1 class="tabletitle">All Stylist Data</h1>
+</div>
+<div class="tablediv h-100">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">STYLIST ID</th>
+        <th scope="col">STYLIST FIRSTNAME</th>
+        <th scope="col">STYLIST LASTNAME</th>
+        <th scope="col">STYLIST EMAIL</th>
+        <th scope="col">STYLIST PHONENUMBER</th>
+        <th scope="col">STYLIST SPECIALIZATION</th>
+        <th scope="col">STYLIST RATING</th>
+        <th>EDIT STYLIST</th>
+        <th>DELETE STYLIST</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let stylist of stylists
+            | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum }
+        "
+      >
+        <td scope="col">{{ stylist.stylistid }}</td>
+        <td scope="col">{{ stylist.firstname }}</td>
+        <td scope="col">{{ stylist.lastname }}</td>
+        <td scope="col">{{ stylist.stylistemail }}</td>
+        <td scope="col">{{ stylist.stylistphonenum }}</td>
+        <td scope="col">{{ stylist.stylistspecialization }}</td>
+        <td scope="col">{{ stylist.stylistrating }}</td>
+
+        <td>
+          <button
+            color="primary"
+            mat-raised-button
+            (click)="editStylistbtn(this.stylist.stylistid)"
+          >
+            Edit
+          </button>
+        </td>
+        <td>
+          <button
+            color="accent"
+            mat-raised-button
+            (click)="deleteStylistbtn(this.stylist.stylistid)"
+          >
+            Delete
+          </button>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <button color="accent" mat-raised-button (click)="addStylistbtn()">
+      Add
+    </button>
+  </div>
+  <div class="text-right">
+    <pagination-controls (pageChange)="pagenum = $event"></pagination-controls>
+  </div>
+  <!--Including the pagination control.-->
+</div>

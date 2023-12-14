@@ -1,0 +1,129 @@
+<section class="h-100 gradient-form loginDivBackground">
+  <div class="container h-100">
+    <!--py-5-->
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black border border-white border-3">
+          <div class="row g-0">
+            <div class="col-lg-6 form-side-transparent">
+              <div class="card-body p-md-5 mx-md-4 login-form-container">
+                <div class="text-center">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                    style="width: 185px"
+                    alt="logo"
+                  />
+                  <h4 class="mt-1 mb-5 pb-1 chromacuts-logoname">ChromaCuts</h4>
+                </div>
+
+                <form
+                  (ngSubmit)="!todoForm.invalid && handlelogin()"
+                  #todoForm="ngForm"
+                >
+                  <div class="form-content">
+                    <label class="form-label" for="form2Example11">
+                      Email address
+                    </label>
+                    <div class="form-outline mb-4">
+                      <input
+                        type="email"
+                        id="useremail"
+                        class="form-control"
+                        placeholder="Email address*"
+                        #email="ngModel"
+                        required
+                        name="uemail"
+                        [(ngModel)]="inpusermail"
+                        pattern="^[a-zA-Z]{1}[a-zA-Z0-9.\-_]*@[a-zA-Z]{1}[a-zA-Z.-]*[a-zA-Z]{1}[.][a-zA-Z]{2,}$"
+                      />
+                    </div>
+                    <div
+                      *ngIf="email.invalid && (email.dirty || email.touched)"
+                    >
+                      <div
+                        *ngIf="email.errors?.['required']"
+                        class="error-message"
+                      >
+                        *Email is required
+                      </div>
+                      <div
+                        *ngIf="email.errors?.['pattern']"
+                        class="error-message"
+                      >
+                        *Emailid is invalid
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-content">
+                    <label class="form-label" for="form2Example22"
+                      >Password</label
+                    >
+                    <div class="form-outline mb-4">
+                      <input
+                        type="password"
+                        id="userpassword"
+                        class="form-control"
+                        placeholder="Password*"
+                        required
+                        #pass="ngModel"
+                        name="upass"
+                        [(ngModel)]="inpuserpass"
+                      />
+                    </div>
+                    <div *ngIf="pass.invalid && (pass.dirty || pass.touched)">
+                      <div
+                        *ngIf="pass.errors?.['required']"
+                        class="error-message"
+                      >
+                        *Password is required
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="text-center pt-1 mb-3 pb-1">
+                    <button
+                      class="btn btn-primary btn-block fa-lg gradient-custom-2 login-button"
+                      type="submit"
+                    >
+                      <!--mb-3-->
+                      Log in
+                    </button>
+                    <br />
+                    <a class="text-muted" href="#!">Forgot password?</a>
+                  </div>
+                </form>
+                <div class="d-flex align-items-center justify-content-center">
+                  <!--pb-4-->
+                  <p class="mb-0 me-2">Don't have an account?</p>
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger register-button"
+                    (click)="registerbtn()"
+                  >
+                    Create new
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4 chroma-info-heading">
+                  Transform Your Look: Book Your Next Stylish Appointment Today!
+                </h4>
+                <p class="large mb-0 chroma-info">
+                  Indulge in the ultimate pampering experience at our salon.
+                  From trendy cuts to luxurious spa treatments, our expert
+                  stylists are here to elevate your beauty and boost your
+                  confidence. Conveniently book your appointment online for a
+                  personalized and rejuvenating salon experience. Your journey
+                  to fabulous starts with a click – Reserve your spot now!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

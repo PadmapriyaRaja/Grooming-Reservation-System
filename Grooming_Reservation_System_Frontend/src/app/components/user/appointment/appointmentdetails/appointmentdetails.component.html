@@ -1,0 +1,90 @@
+<div class="card">
+  <div class="card-body p-5">
+    <h2 class="text-uppercase text-center mb-5">Appoinment details</h2>
+
+    <form>
+      <!--Appointment Date-->
+
+      <div class="form-outline mb-2">
+        <label for="target"><b>Appointment Date</b></label>
+        <br />
+        <input
+          type="date"
+          class="form-control"
+          #appointmentdate="ngModel"
+          [min]="today"
+          [ngModel]="appointment.appointmentDate | date : 'yyyy-MM-dd'"
+          (ngModelChange)="appointment.appointmentDate = $event"
+          name="appointmentdate"
+          required="required"
+        />
+      </div>
+
+      <!--check availability-->
+
+      <button color="accent" mat-raised-button (click)="checkAvailabilty()">
+        CheckAvailabilty
+      </button>
+
+      <!--Appointment Time-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg"
+          ><b>Appoinment Time</b></label
+        >
+        <br />
+        <mat-form-field>
+          <mat-label>Select Appointment Time</mat-label>
+          <mat-select
+            [(ngModel)]="selectedAppointmentTime"
+            name="appointmentTime"
+            (selectionChange)="onAppointmentTimeChange()"
+          >
+            <mat-option *ngFor="let slot of slots" [value]="slot">
+              {{ slot }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!--Appointment Type-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg"
+          ><b>Appoinment Type</b></label
+        >
+        <br />
+        <mat-form-field>
+          <mat-label>Select Appointment Type</mat-label>
+          <mat-select
+            [(ngModel)]="selectedAppointmentType"
+            name="appointmentType"
+            (selectionChange)="onAppointmentTypeChange()"
+          >
+            <mat-option *ngFor="let aptype of appointmenttype" [value]="aptype">
+              {{ aptype }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="d-flex justify-content-center" *ngIf="!isDisabled">
+        <button
+          type="submit"
+          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+          (click)="bookAppointment()"
+        >
+          Save
+        </button>
+      </div>
+      <!--<ng-template #apply>
+            <button
+            type="submit"
+            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+            (click)="bookAppointment()"
+            
+          >
+            Save
+          </button>
+          </ng-template>-->
+    </form>
+  </div>
+</div>

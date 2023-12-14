@@ -1,0 +1,60 @@
+<div>
+  <h1 class="tabletitle">All Services Data</h1>
+</div>
+<div class="tablediv h-100">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">SERVICES ID</th>
+        <th scope="col">SERVICES NAME</th>
+        <th scope="col">SERVICES DESCRIPTION</th>
+        <th scope="col">SERVICES PRICE</th>
+        <th scope="col">SERVICES GENDERTYPE</th>
+        <th>EDIT SERVICES</th>
+        <th>DELETE SERVICES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let service of services
+            | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum }
+        "
+      >
+        <td scope="col">{{ service.servicesid }}</td>
+        <td scope="col">{{ service.servicesname }}</td>
+        <td scope="col">{{ service.servicesdescription }}</td>
+        <td scope="col">{{ service.servicesprice }}</td>
+        <td scope="col">{{ service.servicesgendertype }}</td>
+
+        <td>
+          <button
+            color="primary"
+            mat-raised-button
+            (click)="editServicesbtn(this.service.servicesid)"
+          >
+            Edit
+          </button>
+        </td>
+        <td>
+          <button
+            color="accent"
+            mat-raised-button
+            (click)="deleteServicesbtn(this.service.servicesid)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <button color="accent" mat-raised-button (click)="addServicesbtn()">
+      Add
+    </button>
+  </div>
+  <!--Including the pagination control.-->
+  <div class="text-right">
+    <pagination-controls (pageChange)="pagenum = $event"></pagination-controls>
+  </div>
+</div>

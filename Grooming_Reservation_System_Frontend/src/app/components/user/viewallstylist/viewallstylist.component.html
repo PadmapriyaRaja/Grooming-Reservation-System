@@ -1,0 +1,99 @@
+<!-- <div>
+  <h1 class="tabletitle">All Registered Stylist Data</h1>
+</div>
+<div class="tablediv">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">stylist firstname</th>
+        <th scope="col">stylist lastname</th>
+        <th scope="col">stylist Phone</th>
+        <th scope="col">stylist specialization</th>
+        <th scope="col">stylist Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let stylist of stylist
+            | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum }
+        "
+      >
+        <td scope="col">{{ stylist.firstname }}</td>
+        <td scope="col">{{ stylist.lastname }}</td>
+        <td scope="col">{{ stylist.stylistphonenum }}</td>
+        <td scope="col">{{ stylist.stylistspecialization }}</td>
+        <td scope="col">{{ stylist.stylistrating }}</td>
+
+        <td></td>
+      </tr>
+    </tbody>
+  </table> -->
+<!--Including the pagination control.
+  <div class="text-right">
+    <pagination-controls (pageChange)="pagenum = $event"></pagination-controls>
+  </div>
+</div>-->
+
+<!-- <app-navbar></app-navbar> -->
+
+<!--new card method-->
+
+<div class="h-100 bg-orange-light justify-content-center">
+  <div class="container px-1 px-lg-2 pt-4 pt-lg-5">
+    <h2 class="section-title text-playfair mb-4">Our Stylists</h2>
+    <span class="section-subtitle">We Make Trends Transform into Elegance</span>
+  </div>
+
+  <section
+    class="d-flex justify-content-start flex-wrap py-3 py-lg-4 stylist-card-section"
+    *ngFor="
+      let stylist of stylist
+        | paginate : { itemsPerPage: count, currentPage: p }
+    "
+  >
+    <div class="card mb-3 mx-2 mx-lg-3" style="width: 18rem">
+      <div class="row m-2">
+        <div class="col-md-12">
+          <div class="p-2 py-3 text-center">
+            <div class="img mb-2">
+              <img
+                src="../../assets/user.png"
+                alt="stylist-photo"
+                width="125"
+                height="125"
+                class="rounded-circle"
+              />
+            </div>
+            <h5 class="stylist-name mb-1 text-playfair-black">
+              {{ stylist.firstname }}
+            </h5>
+            <h6 class="stylist-skill text-playfair-black">
+              {{ stylist.stylistspecialization }}
+            </h6>
+
+            <div class="ratings mt-2">
+              <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+            </div>
+            <div class="mt-4 appointment">
+              <button
+                class="button-87"
+                color="accent"
+                (click)="OnselectStylist(this.stylist.stylistid)"
+              >
+                Select
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="paginationControls pt-4 d-flex justify-content-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+<!-- <app-footer></app-footer> -->

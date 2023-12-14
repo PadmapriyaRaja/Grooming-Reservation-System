@@ -1,0 +1,144 @@
+<div class="card">
+  <div class="card-body p-5">
+    <h2 class="text-uppercase text-center mb-5">Edit Services</h2>
+
+    <form
+      (ngSubmit)="!servicesForm.invalid && saveServices()"
+      #servicesForm="ngForm"
+    >
+      <!--services name-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg">SERVICES NAME</label>
+        <input
+          type="text"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="name"
+          minlength="3"
+          required
+          #name="ngModel"
+          [(ngModel)]="services.servicesname"
+          pattern="^[A-Za-z]+$"
+        />
+      </div>
+      <div *ngIf="name.invalid && (name.dirty || name.touched)">
+        <div *ngIf="name.errors?.['required']">name is required</div>
+        <div *ngIf="name.errors?.['minlength']">
+          name should have atleast 4 chars
+        </div>
+
+        <div *ngIf="name.errors?.['pattern']">
+          name should have only alphabets
+        </div>
+      </div>
+
+      <!---services description-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg">
+          SERVICES DESCRIPTION
+        </label>
+        <input
+          type="text"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="servicesdescription"
+          required
+          #servicesdescription="ngModel"
+          [(ngModel)]="services.servicesdescription"
+        />
+      </div>
+      <div
+        *ngIf="
+          servicesdescription.invalid &&
+          (servicesdescription.dirty || servicesdescription.touched)
+        "
+      >
+        <div *ngIf="servicesdescription.errors?.['required']">
+          servicesdescription is required
+        </div>
+      </div>
+
+      <!--services gendertype-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg">
+          SERVICES GENDER
+        </label>
+        <div *ngIf="services.servicesgendertype == 'Male'; else changegender">
+          <mat-radio-group [(ngModel)]="services.servicesgendertype" required>
+            <mat-radio-button
+              value="Male"
+              [checked]="services.servicesgendertype"
+              (click)="setradio('Male')"
+              >Male</mat-radio-button
+            >
+
+            <mat-radio-button value="Female" (click)="setradio('Female')"
+              >Female</mat-radio-button
+            >
+
+            <mat-radio-button value="Both" (click)="setradio('Both')"
+              >Both</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+        <div>
+          <ng-template #changegender>
+            <mat-radio-group [(ngModel)]="services.servicesgendertype" required>
+              <mat-radio-button value="Male" (click)="setradio('Male')"
+                >Male</mat-radio-button
+              >
+
+              <mat-radio-button
+                value="Female"
+                [checked]="services.servicesgendertype"
+                (click)="setradio('Female')"
+                >Female</mat-radio-button
+              >
+            </mat-radio-group>
+          </ng-template>
+        </div>
+      </div>
+
+      <!--services price-->
+      <div class="form-outline mb-2">
+        <label class="form-label" for="form3Example1cg"> SERVICES PRICE </label>
+        <input
+          type="number"
+          id="form3Example1cg"
+          class="form-control form-control-lg"
+          name="servicesprice"
+          required
+          #servicesprice="ngModel"
+          [(ngModel)]="services.servicesprice"
+          min="100"
+          max="2000000"
+        />
+      </div>
+      <div
+        *ngIf="
+          servicesprice.invalid &&
+          (servicesprice.dirty || servicesprice.touched)
+        "
+      >
+        <div *ngIf="servicesprice.errors?.['required']">
+          servicesprice is required
+        </div>
+        <div *ngIf="servicesprice.errors?.['min']">
+          servicesprice should be atleast 100.
+        </div>
+        <div *ngIf="servicesprice.errors?.['max']">
+          servicesprice should be atmost 2000000.
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button
+          type="submit"
+          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
