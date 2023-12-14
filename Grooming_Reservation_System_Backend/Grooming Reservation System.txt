@@ -1,0 +1,66 @@
+Grooming Reservation System:
+
+1. **User Table:**
+   - UserID (Primary key)
+   - FirstName
+   - LastName
+   - Email
+   - Phone
+   - Address
+   - Password
+   - UserType (customer, stylist, admin, etc.)
+
+2. **Salon Table:**
+   - SalonID (Primary key) @OneToMany(One saloon many Stylist) @OneToMany(One Salon many services)
+   - SalonName
+   - Address
+   - Phone
+   - Email
+   - OpeningHours
+   - Description
+   - Rating
+
+3. **Service Table:**
+   - ServiceID (Primary key)	
+   - SalonID (Foreign Key) @ManyToOne (Many Service One Salon)
+   - ServiceName
+   - Description
+   - Duration
+   - Price
+
+4. **Stylist Table:**
+   - StylistID (Primary key)
+   - SalonID (Foreign key)  @ManyToOne (Many Stylist one Saloon)
+   - FirstName
+   - LastName
+   - Phone
+   - Email
+   - Specialization
+   - Rating
+
+5. **Appointment Table:**
+   - AppointmentID (Primary key)
+   - UserID (Foreign key)  @ManyToMany or @OneToMany
+   - StylistID (Foreign key)
+   - ServiceID (Foreign key)
+   - AppointmentDate
+   - StartTime
+   - EndTime
+   - Status (pending, confirmed, completed, canceled)
+   - Location (for home service)
+
+6. **Review Table:**
+   - ReviewID (Primary key)
+   - UserID (Foreign key)
+   - StylistID (Foreign key)
+   - Rating
+   - Comment
+   - ReviewDate
+
+7. **Payment Table:**
+   - PaymentID (Primary key)
+   - UserID (Foreign key) @OneToOne (One User one Payment)
+   - AppointmentID (Foreign key) @OneToOne (One User one Appointment)
+   - Amount
+   - PaymentDate
+   - PaymentStatus (success, pending, failed)

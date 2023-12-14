@@ -1,0 +1,70 @@
+********* Add User *********
+{
+     "userid": 1,
+    "userfirstname": "Akash",
+    "userlastname": "Hedau",
+    "useremail": "akash@gmail.com",
+    "userphonenumber": "8308985621",
+    "userpassword": "Akash@8308"
+}
+
+********* Add Address *********
+{
+    "houseno": "6",
+    "street": " Solapur street",
+    "city": "Solapur",
+    "state": "Maharshtra",
+    "zipcode": "413003",
+    "country": "India"
+}
+
+********* Add Salon *********
+
+{
+    "salonname" : "Vaishnavi's salon",
+    "salonaddress": "Saat rasta, solapur",
+    "saloncity": "Solapur",
+    "salonpincode": "413003",
+    "salonstate": "maha",
+    "salonphone": "8308985621",
+    "salonemailid": "salon1@gmail.com",
+    "salonopeninghours": "mon-fri 9:00-5:00",
+    "salondescription": "testing salon",
+    "salonrating": "5",
+    "salonpassword": "Salon@123"
+}
+
+********* Add Stylist *********
+
+{
+    "firstname" : "Akash",
+    "lastname" : "Hedau",
+    "stylistphonenum" : "8308985621",
+    "stylistemail" : "akash@gmail.com",
+    "stylistspecialization" : "fire cutting",
+    "stylistrating" : "4"
+}
+********* Add Appointment *********
+{
+    "appointmentDate": "2023-10-28",
+    "appointmentStartTime": "22:00:00",
+    "appointmentEndTime": "23:00:00",
+    "appointmentStatus": "pending",
+    "appointmentType": "walking"
+}
+
+
+********* Add service *********
+{
+    "servicesname" : "Makeup",
+    "servicesdescription" : "50% off on makeup",
+    "servicesprice" : "10000",
+    "servicesgendertype" : "female"
+}
+
+******admin*******
+{
+"adminName":"admin",
+"adminEmail":"groomingreservation@gmail.com",
+"adminPassword":"Admin@123"
+}
