@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,12 +27,13 @@ public class Services {
 
 	@NotBlank(message = "Services Name Should not be null")
 	@Column(name = "servicesname", length = 100, nullable = false)
+	@Pattern(message = "Invalid servicesname",regexp = "[a-zA-Z][a-zA-Z ]+")
 	private String servicesname;
 
 	@Column(name = "servicesdescription", length = 255)
 	private String servicesdescription;
 
-	@Min(500)
+	@Min(100)
 	@Max(200000)
 	@Column(nullable = false, name = "servicesprice")
 	private double servicesprice;

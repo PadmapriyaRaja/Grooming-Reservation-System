@@ -19,7 +19,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Intege
 	@Query(value="delete from appointment where userid=?1",nativeQuery=true)
 	void deleteOrderByUserId(Integer userid);
 
-	@Query(value="select * from appointment where userid=?1 ",nativeQuery = true)
+	@Query(value="select * from appointment where userid=?1 order by appointment_id desc ",nativeQuery = true)
 	List<Appointment> getAppointmentByUserId(Integer userid);
 
 	@Query(value="select * from appointment where salonid=?1",nativeQuery=true)

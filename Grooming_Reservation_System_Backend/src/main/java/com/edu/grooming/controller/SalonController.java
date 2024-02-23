@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.grooming.dao.Salon;
 import com.edu.grooming.dao.Services;
+import com.edu.grooming.dao.User;
 import com.edu.grooming.error.BadRequestException;
 import com.edu.grooming.error.ConflictException;
 import com.edu.grooming.error.NotFoundException;
@@ -122,6 +123,28 @@ public class SalonController {
 	@GetMapping("/searchSalonByStatus/{value}")//http://localhost:8990/searchSalonByStatus/{value}
 	public List<Salon> searchSalonByStatus(@PathVariable("value") String value){
 		return salonService.searchSalonByStatus(value);
+	}
+	
+	@GetMapping("/getEnabledSalonByCategory/{value}")//http://localhost:8990/searchSalonByStatus/{value}
+	public List<Salon> getEnabledSalonByCategory(@PathVariable("value") String value){
+		return salonService.getEnabledSalonByCategory(value);
+	}
+	
+	@GetMapping("/getSalonByEmail/{emailid}")
+	public ResponseEntity<Salon> getSalonByEmail(@PathVariable("emailid") String salonemailid) {
+		Salon salon1= salonRepository.getSalonByEmailID(salonemailid);
+		if(salon1==null) {
+			return ResponseEntity.badRequest().body(null);
+			
+		}else {
+			
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(salon1); 
+		}
+	}
+	
+	@GetMapping("/getAllAppliedSalon")
+	public List<Salon> getAllAppliedSalon(){
+		return salonService.getAllAppliedSalon();
 	}
 	
 }

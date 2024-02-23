@@ -58,6 +58,9 @@ public class Stylist {
 	@Column(name="stylistrating", nullable=false)
 	private Integer stylistrating;
 	
+	@Column(nullable=false)
+	private boolean stylistisDeleted;
+	
 	@ManyToOne
 	@JoinColumn(name="salonid")
 	private Salon salon; 
@@ -81,6 +84,7 @@ public class Stylist {
 		this.stylistemail = stylistemail;
 		this.stylistspecialization = stylistspecialization;
 		this.stylistrating = stylistrating;
+		this.stylistisDeleted = false;
 	}
 
 	public Integer getStylistid() {
@@ -139,12 +143,23 @@ public class Stylist {
 	public void setStylistrating(Integer stylistrating) {
 		this.stylistrating = stylistrating;
 	}
+	
+
+	public boolean isStylistisDeleted() {
+		return stylistisDeleted;
+	}
+
+	public void setStylistisDeleted(boolean stylistisDeleted) {
+		this.stylistisDeleted = stylistisDeleted;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Stylist [stylistid=" + stylistid  + ", firstname=" + firstname + ", lastname="
-				+ lastname + ", stylistphonenum=" + stylistphonenum + ", stylistemail=" + stylistemail
-				+ ", stylistspecialization=" + stylistspecialization + ", stylistrating=" + stylistrating + "]";
+		return "Stylist [stylistid=" + stylistid + ", firstname=" + firstname + ", lastname=" + lastname
+				+ ", stylistphonenum=" + stylistphonenum + ", stylistemail=" + stylistemail + ", stylistspecialization="
+				+ stylistspecialization + ", stylistrating=" + stylistrating + ", stylistisDeleted=" + stylistisDeleted
+				+ ", salon=" + salon + ", appointment=" + appointment + "]";
 	}
 
 	public Salon getSalon() {

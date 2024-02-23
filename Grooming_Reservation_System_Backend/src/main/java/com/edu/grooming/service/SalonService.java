@@ -35,6 +35,10 @@ public interface SalonService  {
 
 	List<Salon> getSalonByCategory(String salonCategory);
 
+	List<Salon> getEnabledSalonByCategory(String value);
+
+	List<Salon> getAllAppliedSalon();
+
 	
 
 }

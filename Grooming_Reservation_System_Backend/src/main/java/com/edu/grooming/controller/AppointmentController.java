@@ -26,15 +26,16 @@ public class AppointmentController {
 	@Autowired
 	private AppointmentService appointmentService;
 
-	@PostMapping("/saveAppointment/{userid}/{salonid}/{stylistid}/{servicesidstr}") //http://localhost:8990/saveAppointment
+	@PostMapping("/saveAppointment/{userid}/{salonid}/{stylistid}/{addressid}/{servicesidstr}") //http://localhost:8990/saveAppointment
 	public Appointment saveAppointment(@RequestBody Appointment appointment,@PathVariable("userid") Integer userid,
 			@PathVariable("salonid") Integer salonid,
-			@PathVariable("stylistid") Integer stylistid,@PathVariable("servicesidstr") String servicesidstr) {
-	
+			@PathVariable("stylistid") Integer stylistid,@PathVariable("addressid") Integer addressid,@PathVariable("servicesidstr") String servicesidstr) {
+		System.out.println(appointment.getAppointmentGrandTotal());
 		System.out.println(servicesidstr);
 		//Appointment appointment1=appointmentService.saveAppointment(appointment,servicesid);
 		Appointment appointment1=appointmentService.saveAppointment(appointment,servicesidstr);
 		Appointment appointment2=appointmentService.updateAppointmentUser(userid,appointment1.getAppointmentId());
+		appointment2=appointmentService.updateAppointmentAddress(addressid, appointment1.getAppointmentId());
 		appointment2=appointmentService.updateAppointmentSalon(salonid,appointment1.getAppointmentId());
 		//appointment2=appointmentService.updateAppointmentService(serviceid,appointment1.getAppointmentId());
 		appointment2=appointmentService.updateAppointmentStylist(stylistid,appointment1.getAppointmentId());
@@ -93,14 +94,26 @@ public class AppointmentController {
 		return appointmentService.updateAppointmentStylist(stylistid,appointmentId);
 	}
 	
+	@PutMapping("/updateAppointmentAddress/{addressid}/{appointmentid}")//http://localhost:8990/updateAppointmentAddress/{addressid}/{appointmentid}
+	public Appointment updateAppointmentAddress(@PathVariable("addressid") Integer addressid,@PathVariable("appointmentid") Integer appointmentId) {
+		return appointmentService.updateAppointmentAddress(addressid,appointmentId);
+	}
+	
 	@PutMapping("/addServiceAppointment/{serviceid}/{appointmentid}")//http://localhost:8990/updateAppointmentService/{serviceid}/{appointmentid}
 	public Appointment addServiceAppointment(@PathVariable("serviceid") Integer serviceid,@PathVariable("appointmentid") Integer appointmentId) throws NotFoundException {
 		System.out.println("addservice");
 		return appointmentService.addServiceAppointment(serviceid,appointmentId);
 	}
 	
-	@PutMapping("/updateBooking/{appointmentid}")
-	public Appointment updateBooking(@RequestBody Appointment appointment,@PathVariable("appointmentid") Integer appointmentId) {
+	@PutMapping("/updateBookingByAppointmentId/{appointmentid}")
+	public Appointment updateBooking(@PathVariable("appointmentid") Integer appointmentId,@RequestBody Appointment appointment) throws NotFoundException {
+		System.out.println("update booking sts");
 		return appointmentService.updateBooking(appointmentId,appointment);
+	}
+	
+	@PutMapping("/updateCancelByAppointmentId/{appointmentid}")
+	public Appointment updateCancelByAppointmentId(@PathVariable("appointmentid") Integer appointmentId,@RequestBody Appointment appointment) throws NotFoundException {
+		System.out.println("update booking sts");
+		return appointmentService.updateCancelByAppointmentId(appointmentId,appointment);
 	}
 }

@@ -9,12 +9,14 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.edu.grooming.dao.Address;
 import com.edu.grooming.dao.Appointment;
 import com.edu.grooming.dao.Salon;
 import com.edu.grooming.dao.Services;
 import com.edu.grooming.dao.Stylist;
 import com.edu.grooming.dao.User;
 import com.edu.grooming.error.NotFoundException;
+import com.edu.grooming.repository.AddressRepository;
 import com.edu.grooming.repository.AppointmentRepository;
 import com.edu.grooming.repository.SalonRepository;
 import com.edu.grooming.repository.ServicesRepository;
@@ -38,6 +40,9 @@ public class AppointmentServiceImpl implements AppointmentService{
 	
 	@Autowired
 	private ServicesRepository servicesRepository;
+	
+	@Autowired
+	private AddressRepository addressRepository;
 
 	@Override
 	public Appointment saveAppointment(Appointment appointment,String servicesid) {
@@ -148,15 +153,50 @@ public class AppointmentServiceImpl implements AppointmentService{
 	}
 
 	@Override
-	public Appointment updateBooking(Integer appointmentId, Appointment appointment) {
-		
-		return appointmentRepository.updateBooking(appointmentId);
+	public Appointment updateBooking(Integer appointmentId, Appointment appointment) throws NotFoundException {
+		Appointment appointment2=null;
+		Optional<Appointment> appointment1=appointmentRepository.findById(appointmentId);
+		if(!appointment1.isPresent()) {
+			throw new NotFoundException("Appointment does not exist");
+		}else {
+			appointment2=appointmentRepository.findById(appointmentId).get();
+			appointment2.setAppointmentStatus("Booked");
+		}
+		         
+				//appointmentRepository.updateBooking(appointmentId);
+				return appointmentRepository.save(appointment2);
 	}
 
 	@Override
 	public List<Appointment> getAllBookedAppointments(Integer userid) {
 		
 		return appointmentRepository.getAllBookedAppointments(userid);
+	}
+
+	@Override
+	public Appointment updateAppointmentAddress(Integer addressid, Integer appointmentId) {
+		
+		Address address = addressRepository.findById(addressid).get();
+		Appointment appointment =  appointmentRepository.findById(appointmentId).get();
+		appointment.updateAppointmentAddress(address);
+		return appointmentRepository.save(appointment);
+	}
+
+	@Override
+	public Appointment updateCancelByAppointmentId(Integer appointmentId, Appointment appointment) throws NotFoundException {
+		// TODO Auto-generated method stub
+		Appointment appointment2=null;
+		Optional<Appointment> appointment1=appointmentRepository.findById(appointmentId);
+		if(!appointment1.isPresent()) {
+			throw new NotFoundException("Appointment does not exist");
+		}else {
+			appointment2=appointmentRepository.findById(appointmentId).get();
+			appointment2.setAppointmentStatus("Cancelled");
+		}
+		         
+				//appointmentRepository.updateBooking(appointmentId);
+				return appointmentRepository.save(appointment2);
+		
 	}
 
 	

@@ -61,14 +61,7 @@ public class StylistServiceImpl implements StylistService{
 	@Override
 	public List<Stylist> deleteStylistById(Integer stylistid) throws NotFoundException {
 		// TODO Auto-generated method stub
-		Optional<Stylist> stylist=stylistRepository.findById(stylistid);
-		if(!stylist.isPresent()) {
-			throw new NotFoundException("stylist not found");
-		}
-		else {
-			stylistRepository.deleteById(stylistid);
-		}
-		
+		stylistRepository.updateStylistisDeleted(stylistid);
 		return stylistRepository.findAll();
 	}
 	

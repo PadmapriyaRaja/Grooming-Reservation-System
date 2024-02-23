@@ -31,4 +31,6 @@ public interface UserService {
 
 	List<User> searchUserlike(String value);
 
+	Boolean userEmail(String userEmail);
+
 }

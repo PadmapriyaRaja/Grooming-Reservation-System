@@ -47,6 +47,11 @@ public class Appointment {
 	@Column(name = "appointmentType" , nullable = false)
     private String appointmentType;
 	
+	@NotNull(message = "Grandtotal should not be empty")
+	@Column(name = "appointmentGrandTotal", nullable = false)
+	private float appointmentGrandTotal ;
+
+	
 	@ManyToOne
 	@JoinColumn(name = "userid")
 	private User user;
@@ -59,7 +64,9 @@ public class Appointment {
 	@JoinColumn(name = "stylistid")
 	private Stylist stylist;
 	
-
+    @ManyToOne
+    @JoinColumn(name="addressid")
+    private Address address;
 
 	@ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -78,17 +85,28 @@ public class Appointment {
 	}
 
 
-	public Appointment(
+	
+	
+
+
+	public Appointment(Integer appointmentId,
 			 LocalDate appointmentDate,
 			 LocalTime appointmentTime,
 			 String appointmentStatus,
-			 String appointmentType) {
+		     String appointmentType,
+			 float appointmentGrandTotal) {
 		super();
+		this.appointmentId = appointmentId;
 		this.appointmentDate = appointmentDate;
 		this.appointmentTime = appointmentTime;
 		this.appointmentStatus = appointmentStatus;
 		this.appointmentType = appointmentType;
+		this.appointmentGrandTotal = appointmentGrandTotal;
 	}
+
+
+
+
 
 
 	public Integer getAppointmentId() {
@@ -127,6 +145,18 @@ public class Appointment {
 		this.appointmentType = appointmentType;
 	}
 	
+	
+	
+	public float getAppointmentGrandTotal() {
+		return appointmentGrandTotal;
+	}
+
+
+	public void setAppointmentGrandTotal(float appointmentGrandTotal) {
+		this.appointmentGrandTotal = appointmentGrandTotal;
+	}
+
+
 	public User getUser() {
 		return user;
 	}
@@ -166,26 +196,29 @@ public class Appointment {
 		this.services = services;
 	}
 
-//	public Address getAddress() {
-//		return address;
-//	}
-//
-//
-//	public void setAddress(Address address) {
-//		this.address = address;
-//	}
-
-	@Override
-	public String toString() {
-		return "Appointment [appointmentId=" + appointmentId + ", appointmentDate=" + appointmentDate
-				+ ", appointmentTime="  + appointmentTime
-				+ ", appointmentStatus=" + appointmentStatus + ", appointmentType=" + appointmentType + "]";
+	public Address getAddress() {
+		return address;
 	}
+
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	
 
 
 	public void updateAppointmentUser(User user2) {
 	
 		this.user = user2;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Appointment [appointmentId=" + appointmentId + ", appointmentDate=" + appointmentDate
+				+ ", appointmentTime=" + appointmentTime + ", appointmentStatus=" + appointmentStatus
+				+ ", appointmentType=" + appointmentType + ", appointmentGrandTotal=" + appointmentGrandTotal + "]";
 	}
 
 
@@ -204,6 +237,12 @@ public class Appointment {
 
 	public void addAppointmentServices(Services services2) {
 		this.services.add(services2);
+		
+	}
+
+
+	public void updateAppointmentAddress(Address address2) {
+		this.address = address2;
 		
 	}
 

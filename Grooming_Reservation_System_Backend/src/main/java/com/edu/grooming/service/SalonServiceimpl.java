@@ -162,6 +162,18 @@ public class SalonServiceimpl implements SalonService {
 	public List<Salon> getSalonByCategory(String salonCategory) {
 		return salonRepository.getSalonByCategory(salonCategory);
 	}
+
+	@Override
+	public List<Salon> getEnabledSalonByCategory(String value) {
+		// TODO Auto-generated method stub
+		return salonRepository.getEnabledSalonByCategory(value);
+	}
+
+	@Override
+	public List<Salon> getAllAppliedSalon() {
+		
+		return salonRepository.getAllAppliedSalon();
+	}
 	
 
 }

@@ -27,6 +27,7 @@ public class Salon {
 
 	@NotBlank(message="Salon Name Should not be null")
 	@Column(name="salonname", length=50, nullable=false)
+	@Pattern(message = "Invalid salonname",regexp = "[a-zA-Z][a-zA-Z ]+")
 	private String salonname;
 	
 	@NotBlank(message="Salon Address Should not be null")

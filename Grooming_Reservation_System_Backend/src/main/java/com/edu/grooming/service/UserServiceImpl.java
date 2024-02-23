@@ -124,4 +124,13 @@ public class UserServiceImpl implements UserService {
 			return userRepository.searchUserByIsDeleted(true);
 	}
 	
+	@Override
+	public Boolean userEmail(String userEmail) {
+		User user=userRepository.getUserByEmailid(userEmail);
+		if(user!= null) 
+			return true;
+		else
+			return false;
+	}
+	
 }
