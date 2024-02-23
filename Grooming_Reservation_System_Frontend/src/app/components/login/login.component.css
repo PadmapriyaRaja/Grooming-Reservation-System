@@ -26,7 +26,7 @@
     padding: 0 2rem;
 }
 
-.loginDivBackground {
+.loginDivBackground { 
     background-image: url("/assets/barber1.jpg"), url("/assets/barber2.jpg"), url("/assets/barber7.jpg");
     background-size: contain;
     background-repeat: no-repeat, no-repeat, no-repeat;

@@ -1,143 +1,96 @@
-<section
-  class="vh-100 bg-image"
-  style="
-    background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');
-  "
->
+<section class="bg-image" style="
+    background-image: url('https://wepik.com/api/image/ai/9ad98c99-bd40-4cd9-a761-9e2e8626bb8a?thumb=1');
+  ">
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px">
+        <div class="col-12 w-50 col-lg-7 col-xl-6">
+          <div class="card my-4" style="border-radius: 15px">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">ADD SERVICES</h2>
-              <form>
-                <form
-                  (ngSubmit)="!servicesForm.invalid && addServices()"
-                  #servicesForm="ngForm"
-                >
-                  <!--services name-->
-                  <div class="form-outline mb-2">
-                    <label class="form-label" for="form3Example1cg"
-                      >SERVICES NAME</label
-                    >
-                    <input
-                      type="text"
-                      id="form3Example1cg"
-                      class="form-control form-control-lg"
-                      name="name"
-                      minlength="3"
-                      required
-                      #name="ngModel"
-                      [(ngModel)]="services.servicesname"
-                      pattern="^[a-zA-Z][a-zA-Z ]+"
-                    />
+              <div class="text-center">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                  style="width: 185px" alt="logo" />
+                <h4 class="mt-1 mb-5 pb-1 chromacuts-logoname">ChromaCuts</h4>
+              </div>
+              <h2 class="text-playfair-black text-center mb-5">Add Your Service</h2>
+              <form (ngSubmit)="!servicesForm.invalid && addServices()" #servicesForm="ngForm" class="service-reg-form">
+                <!--services name-->
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="form3Example1cg">Service Name</label>
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="name" minlength="3"
+                    required #name="ngModel" [(ngModel)]="services.servicesname" pattern="^[a-zA-Z][a-zA-Z ]+" />
+                </div>
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
+                  <div *ngIf="name.errors?.['required']">
+                    *Name is required
                   </div>
-                  <div *ngIf="name.invalid && (name.dirty || name.touched)">
-                    <div *ngIf="name.errors?.['required']">
-                      name is required
-                    </div>
-                    <div *ngIf="name.errors?.['minlength']">
-                      name should have atleast 4 chars
-                    </div>
-
-                    <div *ngIf="name.errors?.['pattern']">
-                      name should have only alphabets
-                    </div>
+                  <div *ngIf="name.errors?.['minlength']">
+                    *Name should have atleast 4 characters
                   </div>
 
-                  <!---services description-->
-                  <div class="form-outline mb-2">
-                    <label class="form-label" for="form3Example1cg">
-                      SERVICES DESCRIPTION
-                    </label>
-                    <input
-                      type="text"
-                      id="form3Example1cg"
-                      class="form-control form-control-lg"
-                      name="servicesdescription"
-                      required
-                      #servicesdescription="ngModel"
-                      [(ngModel)]="services.servicesdescription"
-                    />
+                  <div *ngIf="name.errors?.['pattern']">
+                    *Name should have only alphabets
                   </div>
-                  <div
-                    *ngIf="
-                      servicesdescription.invalid &&
-                      (servicesdescription.dirty || servicesdescription.touched)
-                    "
-                  >
-                    <div *ngIf="servicesdescription.errors?.['required']">
-                      servicesdescription is required
-                    </div>
-                  </div>
+                </div>
 
-                  <!--services gendertype-->
-                  <div class="form-outline mb-2">
-                    <label class="form-label" for="form3Example1cg">
-                      SERVICES GENDER
-                    </label>
-                    <mat-radio-group
-                      [(ngModel)]="services.servicesgendertype"
-                      required
-                    >
-                      <mat-radio-button value="Male" (click)="setradio('Male')"
-                        >Male</mat-radio-button
-                      >
-                      <mat-radio-button
-                        value="Female"
-                        (click)="setradio('Female')"
-                        >Female</mat-radio-button
-                      >
-                      <mat-radio-button value="Both" (click)="setradio('Both')"
-                        >Both</mat-radio-button
-                      >
-                    </mat-radio-group>
+                <!---services description-->
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="form3Example1cg">
+                    Service Description
+                  </label>
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg"
+                    name="servicesdescription" required #servicesdescription="ngModel"
+                    [(ngModel)]="services.servicesdescription" />
+                </div>
+                <div *ngIf="
+                    servicesdescription.invalid &&
+                    (servicesdescription.dirty || servicesdescription.touched)
+                  " class="error-message">
+                  <div *ngIf="servicesdescription.errors?.['required']">
+                    *Services description is required
                   </div>
+                </div>
 
-                  <!--services price-->
-                  <div class="form-outline mb-2">
-                    <label class="form-label" for="form3Example1cg">
-                      SERVICES PRICE
-                    </label>
-                    <input
-                      type="number"
-                      id="form3Example1cg"
-                      class="form-control form-control-lg"
-                      name="servicesprice"
-                      required
-                      #servicesprice="ngModel"
-                      [(ngModel)]="services.servicesprice"
-                      min="100"
-                      max="2000000"
-                    />
-                  </div>
-                  <div
-                    *ngIf="
-                      servicesprice.invalid &&
-                      (servicesprice.dirty || servicesprice.touched)
-                    "
-                  >
-                    <div *ngIf="servicesprice.errors?.['required']">
-                      servicesprice is required
-                    </div>
-                    <div *ngIf="servicesprice.errors?.['min']">
-                      servicesprice should be atleast 100.
-                    </div>
-                    <div *ngIf="servicesprice.errors?.['max']">
-                      servicesprice should be atmost 2000000.
-                    </div>
-                  </div>
+                <!--services gendertype-->
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="form3Example1cg">
+                    Service Gender Type
+                  </label>
+                  <mat-radio-group [(ngModel)]="services.servicesgendertype" required>
+                    <mat-radio-button value="Male" (click)="setradio('Male')">Male</mat-radio-button>
+                    <mat-radio-button value="Female" (click)="setradio('Female')">Female</mat-radio-button>
+                    <mat-radio-button value="Both" (click)="setradio('Both')">Both</mat-radio-button>
+                  </mat-radio-group>
+                </div>
 
-                  <div class="d-flex justify-content-center">
-                    <button
-                      type="submit"
-                      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-                    >
-                      ADD
-                    </button>
+                <!--services price-->
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="form3Example1cg">
+                    Service Price
+                  </label>
+                  <input type="number" id="form3Example1cg" class="form-control form-control-lg" name="servicesprice"
+                    required #servicesprice="ngModel" [(ngModel)]="services.servicesprice" min="100" max="2000000" />
+                </div>
+                <div *ngIf="
+                    servicesprice.invalid &&
+                    (servicesprice.dirty || servicesprice.touched)
+                  " class="error-message">
+                  <div *ngIf="servicesprice.errors?.['required']">
+                    *Service price is required
                   </div>
-                </form>
+                  <div *ngIf="servicesprice.errors?.['min']">
+                    *Service price should be atleast 100.
+                  </div>
+                  <div *ngIf="servicesprice.errors?.['max']">
+                    *Service price should be atmost 2000000.
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-2 add-button text-body">
+                    Add Service
+                  </button>
+                </div>
               </form>
             </div>
           </div>

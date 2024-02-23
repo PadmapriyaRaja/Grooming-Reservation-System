@@ -118,10 +118,7 @@ export class EditsalonComponent {
       
       }
     
-      // onSalonCategoryChange() {
-      //   console.log(this.saloncategory);
-      //   console.log(this.salon.saloncategory);
-      //   }
+      
 
       createTimeString() {
         this.timeString = this.selectedSalonBuisnesHoursStart.value+ ':00-' +this.selectedSalonBuisnesHoursEnd.value+':00';
@@ -139,7 +136,6 @@ export class EditsalonComponent {
         }
         if(this.selectedSalonBuisnesDayStart == this.selectedSalonBuisnesDayEnd){
           this.msg ='Buisnes opening and closing day cannot be same';
-          this.msg ='Please select Salon Buisnes Days';
           this.matDialog.open(InvalidcomponentComponent,{
             width: '700px',
             data:this.msg
@@ -172,17 +168,6 @@ export class EditsalonComponent {
     this.salonpicurl,
     this.saloncountry
     );
-
-    // addressForm = this.builder.group({
-    //   salonname: this.builder.control('',[Validators.required, Validators.minLength(4), Validators.pattern("[a-zA-Z][a-zA-Z ]+")]),
-    //   salonaddress: this.builder.control('', [Validators.required]),
-    //   saloncity: this.builder.control('', [Validators.required,Validators.required]),
-    //   state: this.builder.control('', [Validators.required,Validators.required]),
-    //   pincode: this.builder.control('', [Validators.required, Validators.pattern('^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$')]),
-    //   country: this.builder.control('', [Validators.required,Validators.required])
-    // })
-
-  
   
 
        salonregister(){

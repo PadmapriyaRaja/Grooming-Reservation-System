@@ -27,16 +27,11 @@
           *ngFor="
             let salon of salons
               | paginate
-                : { itemsPerPage: recordsPerPage, currentPage: pagenum }
+                : { itemsPerPage: count, currentPage: p }
           "
         >
-          <!-- <tr
-          *ngFor="
-            let salon of salons
-              | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum }
-          "
-        > -->
-          <tr *ngIf="salon.salonstatus == 'Applied'">
+
+          <tr>
             <td scope="col">{{ salon.salonid }}</td>
             <td scope="col">{{ salon.salonname }}</td>
             <td scope="col">{{ salon.salondescription }}</td>
@@ -95,7 +90,7 @@
                 </button>
               </i>
             </td>
-            <td></td>
+           
           </tr>
         </ng-container>
       </tbody>
@@ -103,7 +98,7 @@
     <!--Including the pagination control.-->
     <div class="text-right">
       <pagination-controls
-        (pageChange)="pagenum = $event"
+        (pageChange)="p = $event"
       ></pagination-controls>
     </div>
   </div>

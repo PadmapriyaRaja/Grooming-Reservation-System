@@ -22,9 +22,7 @@ export class EditserviceComponent {
   setradio(selected:string){
     this.services.servicesgendertype=selected;
   }
-//   onChange(defaultselected) {
-//     this.services.servicesgendertype= defaultselected.target.value;
-//  }
+
   ngOnInit(){
     console.log("oninit");
     this.servicesservice.getServicesById(this.servicesid).subscribe(data=> this.services = data);
@@ -32,7 +30,8 @@ export class EditserviceComponent {
     
   }
   saveServices(){
-    this.servicesservice.updateServiceByServiceId(this.servicesid,this.services).subscribe(()=> console.log('stylist updated'))
+    console.log("in edit");
+    this.servicesservice.updateServiceByServiceId(this.servicesid,this.services).subscribe(()=> console.log(' updated'))
     window.location.reload();
   }
 }

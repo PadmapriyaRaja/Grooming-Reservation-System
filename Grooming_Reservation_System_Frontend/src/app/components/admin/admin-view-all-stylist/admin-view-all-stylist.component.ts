@@ -9,8 +9,8 @@ import { StylistServiceService } from 'src/app/services/stylistservices/stylist-
 })
 export class AdminViewAllStylistComponent {
 
-  recordsPerPage: string|number;
-  pagenum: string|number;
+  p : number =1;
+  count : number =8;
   stylists: any[]=[];
 
   constructor(private stylistDataService: StylistServiceService){}

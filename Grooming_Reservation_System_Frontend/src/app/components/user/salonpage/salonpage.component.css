@@ -27,3 +27,7 @@ p {
  .linespacing{
     line-height: 30px;
  }
+
+ .h-450{
+    min-height: 450px;
+ }

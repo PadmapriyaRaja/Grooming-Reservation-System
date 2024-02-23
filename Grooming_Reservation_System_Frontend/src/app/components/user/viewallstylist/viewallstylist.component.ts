@@ -22,7 +22,7 @@ servicesidstr:string;
 salonidstr:string="";
   salonid: number;
   ids:string[]=[];
-// salonidstr=parseInt(this.salonid);
+
 
 constructor(private stylistService: StylistServiceService,private activeRoute:ActivatedRoute,private router:Router,private matDialog:MatDialog){}
 ngOnInit(){
@@ -34,13 +34,20 @@ ngOnInit(){
   this.stylistService.geAlltStylistBySalonId(this.salonid).subscribe(data => this.stylist=data);
 }
 OnselectStylist(stylistid:string){
+  console.log(stylistid+"stylistid")
   this.ids.push(stylistid);
-  //this.router.navigate(['appointmentdetails',this.salonidstr,this.servicesidstr,stylistid]);
-  this.matDialog.open(AppointmentdetailsComponent,{
+  console.log(this.ids);
+  
+  
+ let dialogRef = this.matDialog.open(AppointmentdetailsComponent,{
     width: '700px',
-    //data:stylistid
+   
     data:this.ids
   })
+  dialogRef.afterClosed().subscribe(result=>{
+    window.location.reload();
+  })
+
 }
 
 }

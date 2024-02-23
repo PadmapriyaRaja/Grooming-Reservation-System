@@ -1,4 +1,3 @@
-// npm install ngx-bootstrap --save
 import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -17,7 +16,7 @@ export class HomepageComponent {
 
 
   p : number =1;
-  count : number =8;
+  count : number =4;
   username: string;
   useremail:string;
   salons: Salon[]=[];
@@ -39,7 +38,10 @@ export class HomepageComponent {
     this.useremail=sessionStorage.getItem("usermail");    
     this.salondataservice.getAllEnabledSalonByRatingDesc().subscribe(data=>this.salons=data);
     this.salondataservice.getAllSalonCategories().subscribe(data => this.categories=data);
-    // console.log('abcd',this.salondataservice.getAllSalonWithCount());
+    if(sessionStorage.getItem("navReloadFlag") == '0'){
+      sessionStorage.setItem("navReloadFlag", '1');
+      window.location.reload();
+    }
   }
 
   getSalonbyCategory(salonCatergory: string) {

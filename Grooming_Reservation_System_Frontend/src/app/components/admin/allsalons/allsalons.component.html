@@ -2,7 +2,7 @@
   <div class="tablediv">
     <h1 class="tabletitle">All Salons</h1>
 
-    <table class="table">
+    <table class="table"> 
       <tr>
         <td>
           <mat-form-field>
@@ -40,7 +40,6 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <!-- <th scope="col">Salon ID</th> -->
           <th scope="col">Salon Name</th>
           <th scope="col">Salon Description</th>
           <th scope="col">Salon Opening Hours</th>
@@ -54,8 +53,6 @@
           <th scope="col">Salon Category</th>
           <th scope="col">Salon Status</th>
           <th scope="col">Salon Appointments</th>
-
-          <!-- <th scope="col">Salon Password</th> -->
           <th>Edit Salon</th>
           <th>Delete Salon</th>
           <th scope="col">Go to SalonPage</th>
@@ -68,15 +65,7 @@
               | paginate : { itemsPerPage: count, currentPage: p }
           "
         >
-          <!-- <tr
-        *ngFor="
-          let salon of salons
-            | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum }
-        "
-      > -->
-          <!-- <tr *ngIf="salon.salonstatus == 'Approved'"> -->
           <tr>
-            <!-- <td scope="col">{{ salon.salonid }}</td> -->
             <td scope="col">{{ salon.salonname }}</td>
             <td scope="col">{{ salon.salondescription }}</td>
             <td scope="col">{{ salon.salonopeninghours }}</td>
@@ -89,7 +78,6 @@
             <td scope="col">{{ salon.salonstate }}</td>
             <td scope="col">{{ salon.saloncategory }}</td>
             <td scope="col">{{ salon.salonstatus }}</td>
-            <!-- <td scope="col">{{ salon.salonpassword }}</td> -->
             <td>
               <button
                 color="primary"

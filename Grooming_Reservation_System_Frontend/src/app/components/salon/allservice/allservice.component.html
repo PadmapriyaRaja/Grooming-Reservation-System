@@ -11,14 +11,14 @@
         <th scope="col">SERVICES PRICE</th>
         <th scope="col">SERVICES GENDERTYPE</th>
         <th>EDIT SERVICES</th>
-        <th>DELETE SERVICES</th>
+       
       </tr>
     </thead>
     <tbody>
       <tr
         *ngFor="
           let service of services
-            | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum }
+            | paginate : { itemsPerPage: count, currentPage: p }
         "
       >
         <td scope="col">{{ service.servicesid }}</td>
@@ -36,15 +36,7 @@
             Edit
           </button>
         </td>
-        <td>
-          <button
-            color="accent"
-            mat-raised-button
-            (click)="deleteServicesbtn(this.service.servicesid)"
-          >
-            Delete
-          </button>
-        </td>
+        
       </tr>
     </tbody>
   </table>
@@ -55,6 +47,6 @@
   </div>
   <!--Including the pagination control.-->
   <div class="text-right">
-    <pagination-controls (pageChange)="pagenum = $event"></pagination-controls>
+    <pagination-controls (pageChange)="p= $event"></pagination-controls>
   </div>
 </div>

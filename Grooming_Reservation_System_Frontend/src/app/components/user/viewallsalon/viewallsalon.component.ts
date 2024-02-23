@@ -11,7 +11,7 @@ export class ViewallsalonComponent {
 
   salons: Salon[]=[];
   p : number =1;
-  count : number =8;
+  count : number =4;
   categories: string[];
 
   constructor(private salondataservice: SalonService){}

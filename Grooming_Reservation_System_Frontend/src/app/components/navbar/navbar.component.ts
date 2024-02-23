@@ -16,12 +16,15 @@ export class NavbarComponent {
   isUserLoggedIn:boolean=false;
   isSalonLoggedIn: boolean=false;
   isLoggedIn:boolean;
+  isAdminLoggedIn: boolean;
   ngOnInit() {
     this.isUserLoggedIn = this.userauthentication.isUserLoggedIn();
     this.isSalonLoggedIn = this.salonservice.isUserLoggedIn();
-    if( this.isUserLoggedIn || this.isSalonLoggedIn){
-      this.isLoggedIn =true;
+    this.username =sessionStorage.getItem("username");
+    if(this.username == "Admin"){
+      this.isAdminLoggedIn = true;
     }
+    
 
     // Subscribe to route fragment changes
     this.route.fragment.subscribe(fragment => {
@@ -59,5 +62,7 @@ export class NavbarComponent {
     this.salonservice.logout();
     this.router.navigate(['lpage']);
     }
-
+    userAppointments(){
+      this.router.navigate(['viewuserallappoinment']);
+    }
 }

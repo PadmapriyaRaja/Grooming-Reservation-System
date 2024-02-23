@@ -1,0 +1,90 @@
+<section>
+    <div class="invoice" >
+      <div class="header">
+        <div class="i_row">
+          <div class="i_logo">
+            <p>{{appointment.salon.salonname}}</p>
+          </div>
+          <div class="i_title">
+            <h2>INVOICE</h2>
+            <p class="p_title text_right">
+              {{appointment.appointmentDate}}
+            </p>
+          </div>
+        </div>
+        <div class="i_row">
+          <div class="i_number">
+            <p class="p_title">INVOICE NO: {{appointment.appointmentId}}</p>
+          </div>
+          <div class="i_address text_right">
+            <p>To</p>
+            <p class="p_title">
+              {{appointment.user.userfirstname}} {{appointment.user.userlastname}}<br />
+              <span>{{appointment.address.houseno}},{{appointment.address.street}}</span><br />
+              <span>{{appointment.address.city}},{{appointment.address.state}}</span><br />
+              <span>{{appointment.address.country}}-{{appointment.address.zipcode}}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="i_table">
+          <div class="i_table_head">
+            <div class="i_row">
+                <div class="i_col w_55">
+                <p class="p_title">SERVICE NAME</p>
+              </div>
+              <div class="i_col w_55">
+                <p class="p_title">DESCRIPTION</p>
+              </div>
+              <div class="i_col w_15">
+                <p class="p_title">PRICE</p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="i_table_body">
+            <div class="i_row"  *ngFor="
+            let service of appointment.services">
+              <div class="i_col w_55">
+                
+                <span>{{service.servicesname}}</span>
+              </div>
+              <div class="i_col w_55">
+                <span> {{service.servicesdescription}}</span>
+              </div>
+              <div class="i_col w_15">
+                <span>₹{{service.servicesprice}}</span>
+              </div>
+            </div>
+           </div>
+            
+          <div class="i_table_foot">
+            <div class="i_row">
+              
+            </div>
+            <div class="i_row grand_total_wrap">
+              <div class="i_col w_50">
+              </div>
+              <div class="i_col w_50 grand_total">
+                <p><span>GRAND TOTAL:</span>
+                  <span>₹{{appointment.appointmentGrandTotal}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="i_row">
+          <div class="i_col w_50">
+            <p class="p_title">salon address</p>
+            <span>{{appointment.salon.salonaddress}}</span><br />
+              <span>{{appointment.salon.saloncity}}</span><br />
+              <span>{{appointment.salon.salonstate}}-{{appointment.salon.salonpincode}}</span><br/>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,12 +1,12 @@
 export class User {
 
     constructor(
-    public userid: number | undefined,
-    public userfirstname: string | undefined,
-    public userlastname : string | undefined,
-    public useremail: string | undefined,
-    public userphonenumber: string | undefined,
-    public userpassword: string | undefined,
-    public userisDeleted: boolean | undefined
+    public userid: number ,
+    public userfirstname: string ,
+    public userlastname : string ,
+    public useremail: string ,
+    public userphonenumber: string ,
+    public userpassword: string ,
+    public userisDeleted: boolean 
     ){}
 }

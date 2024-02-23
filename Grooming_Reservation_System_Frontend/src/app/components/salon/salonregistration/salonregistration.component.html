@@ -1,7 +1,7 @@
 <section
   class="bg-image"
   style="
-    background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');
+    background-image: url('https://wepik.com/api/image/ai/9ad72fe7-088c-48da-b0a3-fd7dd37ba43a?upscaled=0');
   "
 >
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
@@ -10,11 +10,17 @@
         <div class="col-12 w-50 col-md-9 col-lg-7 col-xl-6">
           <div class="card my-4" style="border-radius: 15px">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+              <div class="text-center">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px"
+                  alt="logo" />
+                <h4 class="mt-1 mb-5 pb-1 chromacuts-logoname">ChromaCuts</h4>
+              </div>
+              <h2 class="text-uppercase text-center mb-5 text-playfair-black">Create an account</h2>
 
               <form
                 (ngSubmit)="!salonForm.invalid && salonregister()"
                 #salonForm="ngForm"
+                class="salon-reg-form"
               >
                 <!--salonname-->
                 <div class="form-outline mb-2">
@@ -37,16 +43,17 @@
                       salonname.invalid &&
                       (salonname.dirty || salonname.touched)
                     "
-                  >
+                    class="error-message"
+                  > 
                     <div *ngIf="salonname.errors?.['required']">
-                      salonname is required
+                      *Salon name is required
                     </div>
                     <div *ngIf="salonname.errors?.['minlength']">
-                      salonname should have atleast 4 chars
+                      *Salon name should have atleast 4 characters
                     </div>
 
                     <div *ngIf="salonname.errors?.['pattern']">
-                      salonname should have only alphabets
+                      *Salon name should have only alphabets
                     </div>
                   </div>
                   <!--salonaddress-->
@@ -69,12 +76,13 @@
                       salonaddress.invalid &&
                       (salonaddress.dirty || salonaddress.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="salonaddress.errors?.['required']">
-                      salon area is required
+                      *Salon area is required
                     </div>
                     <div *ngIf="salonaddress.errors?.['maxlength']">
-                      salon area should have atmost 200 chars
+                      *Salon area should have atmost 200 characters
                     </div>
                   </div>
                 </div>
@@ -163,15 +171,16 @@
                       salonpincode.invalid &&
                       (salonpincode.dirty || salonpincode.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="salonpincode.errors?.['required']">
-                      salonpincode is required
+                      *Salon pincode is required
                     </div>
                     <div *ngIf="salonpincode.errors?.['maxlength']">
-                      salonpincode should have atleast 8 chars
+                      *Salon pincode should have atleast 8 characteSs
                     </div>
                     <div *ngIf="salonpincode.errors?.['pattern']">
-                      salonpincode should have only numbers
+                      *Salon pincode should have only numbers
                     </div>
                   </div>
                 </div>
@@ -197,15 +206,16 @@
                       salonphone.invalid &&
                       (salonphone.dirty || salonphone.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="salonphone.errors?.['required']">
-                      salonphonenumber is required
+                      *Salon phonenumber is required
                     </div>
                     <div *ngIf="salonphone.errors?.['maxlength']">
-                      salonphonenumber should have atleast 10 digits
+                      *Salon phonenumber should have atleast 10 digits
                     </div>
                     <div *ngIf="salonphone.errors?.['pattern']">
-                      salonphonenumber should have only numbers and phonenumber
+                      *Salon phonenumber should have only numbers and phonenumber
                       start from 6,7,8 or 9
                     </div>
                   </div>
@@ -232,15 +242,16 @@
                       salonemailid.invalid &&
                       (salonemailid.dirty || salonemailid.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="salonemailid.errors?.['required']">
-                      salonemailid is required
+                      *Salon emailid is required
                     </div>
                     <div *ngIf="salonemailid.errors?.['maxlength']">
-                      salonemailid can have atmost 30 chars
+                      *Salon emailid can have atmost 30 characters
                     </div>
                     <div *ngIf="salonemailid.errors?.['pattern']">
-                      salonemail invalid
+                      *Salon email invalid
                     </div>
                   </div>
                 </div>
@@ -248,7 +259,7 @@
                 <!--salon business days-->
                 <div class="form-outline mb-2">
                   <label class="form-label" for="form3Example1cg">
-                    Salon Buisnes Days
+                    Salon Business Days
                   </label>
 
                   <div class="row">
@@ -363,12 +374,13 @@
                       salondescription.invalid &&
                       (salondescription.dirty || salondescription.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="salondescription.errors?.['required']">
-                      salondescription is required
+                      *Salon description is required
                     </div>
                     <div *ngIf="salondescription.errors?.['maxlength']">
-                      salondescription can have atmost 255 chars
+                      *Salon description can have atmost 255 characters
                     </div>
                   </div>
                 </div>
@@ -395,18 +407,19 @@
                       salonpassword.invalid &&
                       (salonpassword.dirty || salonpassword.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="salonpassword.errors?.['required']">
-                      salonpassword is required
+                      *Salon password is required
                     </div>
                     <div *ngIf="salonpassword.errors?.['maxlength']">
-                      salonpassword can have atmost 20 chars
+                      *Salon password can have atmost 20 chars
                     </div>
                     <div *ngIf="salonpassword.errors?.['minlength']">
-                      salonpassword can have atleast 8 chars
+                      *Salon password can have atleast 8 chars
                     </div>
                     <div *ngIf="salonpassword.errors?.['pattern']">
-                      salonpassword invalid , password should contain atleast
+                      *Salon password invalid , password should contain atleast
                       one lowercase,one uppercase,one special character,one
                       numerical
                     </div>
@@ -458,37 +471,40 @@
                       salondescription.invalid &&
                       (salondescription.dirty || salondescription.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="salondescription.errors?.['required']">
-                      salondescription is required
+                      *Salon description is required
                     </div>
                     <div *ngIf="salondescription.errors?.['maxlength']">
-                      salondescription can have atmost 255 chars
+                      *Salon description can have atmost 255 characters
                     </div>
                   </div>
                 </div>
                 <!--checkbox-->
-                <div class="form-check d-flex justify-content-center mb-5">
+                <div class="form-check d-flex justify-content-center mb-1">
                   <div>
                     <input
-                      class="form-check-input me-2"
+                    class="form-check-input me-2"
                       type="checkbox"
-                      value=""
-                      id="form2Example3cg"
+                      id="TCCheckbox"
+                      name="isAccept"
+                      [(ngModel)]="isAccept"
+                     checked
+                      required
                     />
                   </div>
+                
                   <label class="form-check-label" for="form2Example3g">
                     I agree all statements in
-                    <a routerLink="/T&C" class="text-body"
-                      ><u>Terms of service</u></a
-                    >
+                    <a  class="text-body" (click)="termsandcondition()"><u>Terms of conditions</u></a>
                   </label>
                 </div>
 
                 <div class="d-flex justify-content-center">
                   <button
                     type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                    class="btn btn-success btn-block btn-lg register-button gradient-custom-2 text-body"
                   >
                     Register
                   </button>
@@ -509,12 +525,4 @@
   </div>
 </section>
 
-<!-- <div>
-  <mat-form-field>
-  <mat-label>Select Opening Hours</mat-label>
-  <mat-select
-    [(ngModel)]="selectedSalonopeninghours"
-    name="salonOpeninghours"
-    (selectionChange)="onselectedSalonOpeningHours(selectedSalonopeninghours)"
-  >
-    <mat-option *ngFor="let salonOpeninghours of openinghours" [value]="salonOpeninghours"> -->
+

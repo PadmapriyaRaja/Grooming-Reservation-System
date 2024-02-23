@@ -3,15 +3,19 @@ footer {
   position: relative;
   bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
+  height: auto;
   background-color: #333;
   font-size: 80%;
   padding: 2rem;
-  /* Adjust the padding as needed */
+   /*Adjust the padding as needed*/
   color: #888;
   text-align: center;
   
 }
+
+
 
 .footer-nav {
   list-style: none;

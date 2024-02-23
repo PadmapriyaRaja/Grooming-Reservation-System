@@ -19,7 +19,7 @@
           *ngFor="
             let stylist of stylists
               | paginate
-                : { itemsPerPage: recordsPerPage, currentPage: pagenum }
+                : { itemsPerPage: count, currentPage: p }
           "
         >
           <td scope="col">{{ stylist.firstname }}</td>
@@ -43,7 +43,7 @@
     <!--Including the pagination control.-->
     <div class="text-right">
       <pagination-controls
-        (pageChange)="pagenum = $event"
+        (pageChange)="p = $event"
       ></pagination-controls>
     </div>
   </div>

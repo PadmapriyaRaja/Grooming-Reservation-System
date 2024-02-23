@@ -1,24 +1,31 @@
 <section
-  class="vh-100 bg-image"
+  class="bg-image"
   style="
-    background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');
+    background-image: url('https://wepik.com/api/image/ai/9ad72fe7-088c-48da-b0a3-fd7dd37ba43a?upscaled=0');
   "
 >
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px">
-            <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+          <div class="card h-100 my-4" style="border-radius: 15px">
+            <div class="card-body p-5 ">
+              <div class="text-center">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px"
+                  alt="logo" />
+                <h4 class="mt-1 mb-5 pb-1 chromacuts-logoname">ChromaCuts</h4>
+              </div>
+
+              <h2 class="text-uppercase text-center mb-5 text-playfair-black">Create an account</h2>
 
               <form
                 (ngSubmit)="!userForm.invalid && register()"
                 #userForm="ngForm"
+                class="user-reg-form"
               >
                 <div class="form-outline mb-2">
                   <label class="form-label" for="form3Example1cg"
-                    >FIRST NAME</label
+                    >First Name</label
                   >
                   <input
                     type="text"
@@ -36,21 +43,22 @@
                       firstname.invalid &&
                       (firstname.dirty || firstname.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="firstname.errors?.['required']">
-                      firstname is required
+                      *Firstname is required
                     </div>
 
                     <div *ngIf="firstname.errors?.['minlength']">
-                      firstname should have atleast 4 chars
+                      *Firstname should have atleast 4 characters
                     </div>
 
                     <div *ngIf="firstname.errors?.['pattern']">
-                      firstname should have only alphabets
+                      *Firstname should have only alphabets
                     </div>
                   </div>
                   <label class="form-label" for="form3Example1cg"
-                    >LAST NAME</label
+                    >Last Name</label
                   >
                   <input
                     type="text"
@@ -67,24 +75,25 @@
                     *ngIf="
                       lastname.invalid && (lastname.dirty || lastname.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="lastname.errors?.['required']">
-                      lastname is required
+                      *Lastname is required
                     </div>
 
                     <div *ngIf="lastname.errors?.['minlength']">
-                      lastname should have atleast 4 chars
+                      *Lastname should have atleast 4 characters
                     </div>
 
                     <div *ngIf="lastname.errors?.['pattern']">
-                      lastname should have only alphabets
+                      *Lastname should have only alphabets
                     </div>
                   </div>
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="form3Example3cg"
-                    >EMAIL ID</label
+                    >Email Id</label
                   >
                   <input
                     type="email"
@@ -101,24 +110,25 @@
                     *ngIf="
                       emailid.invalid && (emailid.dirty || emailid.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="emailid.errors?.['required']">
-                      emailid is required
+                      *Emailid is required
                     </div>
 
                     <div *ngIf="emailid.errors?.['maxlength']">
-                      emailid max length should be less than 30
+                      *Emailid maximum length should be less than 30
                     </div>
 
                     <div *ngIf="emailid.errors?.['pattern']">
-                      emailid is invalid
+                      *Emailid is invalid
                     </div>
                   </div>
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="form3Example4cg"
-                    >MOBILE NUMBER</label
+                    >Mobile Number</label
                   >
                   <input
                     type="text"
@@ -136,24 +146,25 @@
                       mobilenumber.invalid &&
                       (mobilenumber.dirty || mobilenumber.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="mobilenumber.errors?.['required']">
-                      mobilenumber is required
+                      *Mobilenumber is required
                     </div>
 
                     <div *ngIf="mobilenumber.errors?.['pattern']">
-                      Invalid mobilenumber
+                      *Invalid mobilenumber
                     </div>
 
                     <div *ngIf="mobilenumber.errors?.['maxlength']">
-                      mobilenumber should have atleast 10 digits
+                      *Mobilenumber should have atleast 10 digits
                     </div>
                   </div>
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="form3Example4cdg"
-                    >PASSWORD</label
+                    >Password</label
                   >
                   <input
                     type="password"
@@ -171,48 +182,54 @@
                     *ngIf="
                       password.invalid && (password.dirty || password.touched)
                     "
+                    class="error-message"
                   >
                     <div *ngIf="password.errors?.['required']">
-                      Password is required
+                      *Password is required
                     </div>
 
                     <div *ngIf="password.errors?.['minlength']">
-                      Password should have atleast 5 character and less than 20
+                      *Password should have atleast 5 character and less than 20
                       character
                     </div>
 
                     <div *ngIf="password.errors?.['pattern']">
-                      Password should have one uppercase ,one lowercase,one
+                      *Password should have one uppercase ,one lowercase,one
                       special character and number
                     </div>
                   </div>
                 </div>
 
-                <div class="form-check d-flex justify-content-center mb-5">
+                <div class="form-check d-flex justify-content-center mb-1">
                   <div>
                     <input
                       class="form-check-input me-2"
                       type="checkbox"
-                      value=""
                       id="TCCheckbox"
+                      name="isAccept"
+                      [(ngModel)]="isAccept"
+                     checked
+                      required
                     />
                   </div>
+                
                   <label class="form-check-label" for="form2Example3g">
                     I agree all statements in
-                    <a href="/T&C" class="text-body"><u>Terms of service</u></a>
+                    <a  class="text-body" (click)="termsandcondition()"><u>Terms of conditions</u></a>
                   </label>
                 </div>
+                 
 
                 <div class="d-flex justify-content-center">
                   <button
                     type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                    class="btn btn-success btn-block btn-lg gradient-custom-2 register-button text-body"
                   >
                     Register
                   </button>
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">
+                <p class="text-center text-muted mt-2 mb-0">
                   Have already an account?
                   <a routerLink="/login" class="fw-bold text-body"
                     ><u>Login here</u></a

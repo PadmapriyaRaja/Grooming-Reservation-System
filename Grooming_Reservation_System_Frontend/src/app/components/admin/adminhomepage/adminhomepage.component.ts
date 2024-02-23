@@ -16,10 +16,15 @@ export class AdminhomepageComponent {
 
   ngOnInit(){
     this.username = sessionStorage.getItem("username");
+    if(sessionStorage.getItem("navReloadFlag") == '0'){ 
+      sessionStorage.setItem("navReloadFlag", '1');
+      window.location.reload();
+    }
   }
 
   logout() {
     this.userauthentication.logout();
+    sessionStorage.setItem("navBarReloadFlag", '1');
     this.router.navigate(['lpage']);
   }
 

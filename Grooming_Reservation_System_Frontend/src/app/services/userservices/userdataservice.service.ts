@@ -49,5 +49,9 @@ export class UserDataService {
   searchUserByIsDeleted(searchValue: string) {
     return this.http.get<User[]>(`${this.url}/searchUserByIsDeleted/${searchValue}`);
   }
+
+  checkUserExists(email:String){
+    return this.http.get<boolean>(`${this.url}/checkUserExists/${email}`);
+  }
   
 }

@@ -1,0 +1,108 @@
+.bg-image {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/*----------------------------*/
+.chromacuts-logoname {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/*Playfair Text*/
+.text-playfair {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif !important;
+}
+
+.text-playfair-black {
+    color: #000000;
+    font-family: 'Playfair Display', serif !important;
+}
+
+.text-playfair-darkpink {
+    color: #ff33cc;
+    font-family: 'Playfair Display', serif !important;
+}
+
+/*Button*/
+.register-button {
+    border-radius: 4px;
+    background-color: #e15c86;
+    border: none;
+    color: #fff !important;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    padding: 8px;
+    width: 130px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 36px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .7);
+}
+
+.register-button {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.register-button:after {
+    content: '\1F487';
+    position: absolute;
+    opacity: 0;
+    top: 7px;
+    right: -18px;
+    transition: 0.5s;
+}
+
+.register-button:hover {
+    padding-right: 26px;
+    padding-left: 8px;
+}
+
+.register-button:hover:after {
+    opacity: 1;
+    right: 10px;
+}
+
+/*Gradient Color*/
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .gradient-custom-2 {
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+    }
+}
+
+/*Error Message*/
+.error-message {
+    color: red;
+    font-size: 13px;
+    margin: 0;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+}
+
+.user-reg-form label {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+}

@@ -63,7 +63,11 @@ import { SalonAppointmentsComponent } from './components/salon/salon-appointment
 import { AppointmentdetailsComponent } from './components/user/appointment/appointmentdetails/appointmentdetails.component';
 import { AppointmentdisplayComponent } from './components/user/appointment/appointmentdisplay/appointmentdisplay.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component'; 
+import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
+import { ForgotpassswordComponent } from './components/user/forgotpasssword/forgotpasssword.component';
+import { AppointmentrecieptComponent } from './components/user/appointment/Thankyou/appointmentreciept.component';
+import { InvoiceComponent } from './components/user/invoice/invoice.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 
 
 
@@ -114,7 +118,10 @@ import { TermsAndConditionsComponent } from './components/terms-and-conditions/t
     AppointmentdetailsComponent,
     AppointmentdisplayComponent,
     PaymentComponent,
-    TermsAndConditionsComponent
+    TermsAndConditionsComponent,
+    ForgotpassswordComponent,
+    AppointmentrecieptComponent,
+    InvoiceComponent
     
   ],
   imports: [
@@ -137,6 +144,7 @@ import { TermsAndConditionsComponent } from './components/terms-and-conditions/t
     MatRadioModule,
     MatAutocompleteModule,
     MatTableModule,
+    NgbModule,
    
     
 

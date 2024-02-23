@@ -17,7 +17,7 @@ export class AllsalonsComponent {
   searchValue='';
   salons: Salon[]=[];
   p : number =1;
-  count : number =10;
+  count : number =3;
   msg: string;
   salStatus: any;
   selectedSalonStatus: any;
@@ -34,7 +34,7 @@ export class AllsalonsComponent {
   searchForm =this.fb.nonNullable.group({
     searchValue:'',
   })
-
+ 
 
 
   ngOnInit(){
@@ -89,17 +89,6 @@ export class AllsalonsComponent {
       }
 
       
-  // delete salon
-
-  // deleteSalon(salonid: any) {
-  //   this.msg= 'Deleted';
-  //   this.admindataservice.getSalonById(salonid).subscribe(data=> 
-  //     this.admindataservice.updateSalonById(salonid,data).subscribe(()=>{
-  //       this.matDialog.open(SalonapprovepopupComponent,{width: '250px', data:this.msg});
-  //     }))
-  // }
-
-    //  Edit Salon
   editSalon(salonid: any) {
     this.matDialog.open(EditsalonComponent,{
       width: '800px',

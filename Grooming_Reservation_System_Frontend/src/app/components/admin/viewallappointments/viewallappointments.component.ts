@@ -13,6 +13,8 @@ export class ViewallappointmentsComponent {
   
   salon: any;
   appointments: any;
+  p : number =1;
+  count : number =10;
 
   constructor(private appointmentdataservice: AppointmentService,
     private matDialog: MatDialog,

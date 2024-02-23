@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Appointment } from 'src/app/dao/appointment';
+import { Salon } from 'src/app/dao/salon';
 import { AppointmentService } from 'src/app/services/appointmentservices/appointment.service';
-// import { AppoinmentService } from 'src/app/services/appoinmentservices/appoinment.service';
+import { InvoiceComponent } from '../invoice/invoice.component';
+
 
 @Component({
   selector: 'app-viewaallappoinment',
@@ -12,42 +14,55 @@ import { AppointmentService } from 'src/app/services/appointmentservices/appoint
 export class ViewaallappoinmentComponent {
   p : number =1;
   count : number =10;
-  salon: any;
-  appointments: any;
-  appointmentidstr=sessionStorage.getItem("appointmentid");
-  appointmentid=parseInt(this.appointmentidstr);
-  useridstr=sessionStorage.getItem("userid");
-  userid=parseInt(this.useridstr);
+  appointments:any[]=[];
+  salon:Salon
+  today = new Date().toISOString().split('T')[0];
   appointment:Appointment;
+  
+  
+  useridstr=sessionStorage.getItem("userid").toString();
+  userid=parseInt(this.useridstr);
+  appointment1: Appointment;
+  
   constructor(private appointmentdataservice: AppointmentService,
-    private matDialog: MatDialog,
+    private matDialog:MatDialog
     ){}
 
+
   ngOnInit(){
-    this.appointmentdataservice.getAppointmentByAppointmentId(this.appointmentid).subscribe(
-          data=>{this.appointment=data,
-                 this.updateBooking(),
-                 this.getAllBookedAppointment()
-                }
-       )
-    
-    
-    }
-
-  getAllBookedAppointment(){
-    this.appointmentdataservice.getAllBookedAppointments(this.userid).subscribe(
-      data => {this.appointments =data, 
-                console.log(this.appointments);
-             })
+    this.appointmentdataservice.getAppointmentsByUserId(this.userid).subscribe(
+      data=>{
+        this.appointments=data
+      }
+    )
   }
-  updateBooking() {
-    this.appointmentdataservice.updateBooking(this.appointmentid,this.appointment);
+  viewInvoice(appointmentid){
+    this.matDialog.open(InvoiceComponent,{
+      
+        width:'700px',
+        height: '700px',
+        data: appointmentid
+      
+    })
   }
-  
-    // errorHandling(banckenderror: any): void {
-    //   this.matDialog.open(InvalidcomponentComponent,{
-    //   width: '250px', data: banckenderror.response}
-    //   );
-    // }
 
+  cancel(appointmentid){
+      this.appointmentdataservice.getAppointmentByAppointmentId(appointmentid).subscribe(data=>
+        {
+          this.appointment=data,
+          console.log(this.appointment),
+          this.updatetatus(appointmentid)
+
+        }
+      )
+      
+  }
+  updatetatus(appointmentid: any) {
+ 
+      this.appointmentdataservice.updateappointmentstatus(appointmentid,this.appointment).subscribe(
+        data=>{this.appointment1=data,
+        window.location.reload()}
+      )
+      
+  }
 }

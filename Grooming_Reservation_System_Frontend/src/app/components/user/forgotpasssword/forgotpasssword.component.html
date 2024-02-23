@@ -1,0 +1,165 @@
+<div class="card">
+  <div class="card-body p-4">
+    <h2 class="text-uppercase text-center mb-1">UPDATE PASSWORD</h2>
+  </div>
+
+  <!-- Email input -->
+  <form
+    (ngSubmit)="!userForm.invalid && validateUser()"
+    #userForm="ngForm"
+    class="user-reg-form"
+  >
+    <div class="form-content" *ngIf="isEmailDisabled">
+      <label class="form-label" for="form3Example3cg">Email Id</label>
+      <div class="form-outline mb-4">
+        <input
+          type="email"
+          id="form3Example3cg"
+          class="form-control form-control-lg"
+          name="emailid"
+          placeholder="Email address"
+          maxlength="30"
+          required
+          #emailid="ngModel"
+          [(ngModel)]="useremail"
+          pattern="^[a-zA-Z]{1}[a-zA-Z0-9.\-_]*@[a-zA-Z]{1}[a-zA-Z.-]*[a-zA-Z]{1}[.][a-zA-Z]{2,}$"
+        />
+      </div>
+      <div
+        *ngIf="emailid.invalid && (emailid.dirty || emailid.touched)"
+        class="error-message"
+      >
+        <div *ngIf="emailid.errors?.['required']">*Emailid is required</div>
+
+        <div *ngIf="emailid.errors?.['maxlength']">
+          *Emailid maximum length should be less than 30
+        </div>
+
+        <div *ngIf="emailid.errors?.['pattern']">*Emailid is invalid</div>
+      </div>
+    </div>
+    <div class="mt-4 appointment" *ngIf="isEmailDisabled">
+      <button type="submit" class="button-87" color="accent">Continue</button>
+    </div>
+  </form>
+
+  <!-- OTP input -->
+
+  <form
+    (ngSubmit)="!otpForm.invalid && checkOtp()"
+    #otpForm="ngForm"
+    class="user-reg-form"
+  >
+    <div class="form-content" *ngIf="!isDisabled">
+      <label class="form-label" for="form3Example4cdg">Enter OTP</label>
+      <div class="form-outline mb-2">
+        <input
+          type="text"
+          id="form3Example4cdg"
+          class="form-control form-control-lg"
+          name="otpField"
+          minlength="6"
+          maxlength="6"
+          required
+          #otpField="ngModel"
+          [(ngModel)]="inpOtp"
+        />
+      </div>
+      <div
+        *ngIf="otpField.invalid && (otpField.dirty || otpField.touched)"
+        class="error-message"
+      >
+        <div ngIf="otpField.errors?.['required']"> OTP is required</div>
+
+        <div *ngIf="otpField.errors?.['minlength']">
+          * Please enter 6 digit OTP
+        </div>
+        <div *ngIf="otpField.errors?.['maxlength']">
+          * Please enter 6 digit OTP
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 appointment" *ngIf="!isDisabled">
+      <button type="submit" class="button-87" color="accent">Submit</button>
+    </div>
+  </form>
+
+  <!-- New Password -->
+
+  <form
+    (ngSubmit)="!passForm.invalid && updatepass()"
+    #passForm="ngForm"
+    class="user-reg-form"
+  >
+    <div class="form-content" *ngIf="isAuthorised">
+      <label class="form-label" for="form3Example4cdg">New Password</label>
+      <div class="form-outline mb-2">
+        <input
+          type="password"
+          id="form3Example4cdg"
+          class="form-control form-control-lg"
+          name="password"
+          minlength="5"
+          maxlength="20"
+          required
+          #password="ngModel"
+          [(ngModel)]="firstpassword"
+          pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+        />
+      </div>
+      <div
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="error-message"
+      >
+        <div *ngIf="password.errors?.['required']">*Password is required</div>
+
+        <div *ngIf="password.errors?.['minlength']">
+          *Password should have atleast 5 character and less than 20 character
+        </div>
+
+        <div *ngIf="password.errors?.['pattern']">
+          *Password should have one uppercase ,one lowercase,one special
+          character and number
+        </div>
+      </div>
+    </div>
+
+    <!--retype pass-->
+    <div class="form-content" *ngIf="isAuthorised">
+      <label class="form-label" for="form3Example4cdg">Re-type Password</label>
+      <div class="form-outline mb-2">
+        <input
+          type="password"
+          id="form3Example4cdg"
+          class="form-control form-control-lg"
+          name="repassword"
+          minlength="5"
+          maxlength="20"
+          required
+          #repassword="ngModel"
+          [(ngModel)]="secondpassword"
+          pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+        />
+      </div>
+      <div
+        *ngIf="repassword.invalid && (repassword.dirty || repassword.touched)"
+        class="error-message"
+      >
+        <div *ngIf="repassword.errors?.['required']">*Password is required</div>
+
+        <div *ngIf="repassword.errors?.['minlength']">
+          *Password should have atleast 5 character and less than 20 character
+        </div>
+
+        <div *ngIf="repassword.errors?.['pattern']">
+          *Password should have one uppercase ,one lowercase,one special
+          character and number
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4 appointment" *ngIf="isAuthorised">
+      <button type="submit" class="button-87" color="accent">UPDATE</button>
+    </div>
+  </form>
+</div>

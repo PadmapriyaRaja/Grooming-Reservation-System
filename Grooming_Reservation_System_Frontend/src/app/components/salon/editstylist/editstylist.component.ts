@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { StylistServiceService } from 'src/app/services/stylistservices/stylist-service.service'; 
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Stylist } from 'src/app/dao/stylist';
 
 @Component({

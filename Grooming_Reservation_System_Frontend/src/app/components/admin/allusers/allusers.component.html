@@ -54,11 +54,10 @@
           let user of users | paginate : { itemsPerPage: count, currentPage: p }
         "
       >
-        <!-- <td>{{ user.userid }}</td> -->
         <td>{{ user.userfirstname }}</td>
         <td>{{ user.userlastname }}</td>
         <td>{{ user.useremail }}</td>
-        <td>{{ user.userphonenumber }}</td>
+        <td>{{ user.userphonenumber }}</td> 
         <td>
           <button
             *ngIf="user.userfirstname != 'Admin'"

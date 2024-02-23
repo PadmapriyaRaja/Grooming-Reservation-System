@@ -1,15 +1,22 @@
-<div>
-  <h1 class="tabletitle">All Appoinment Data</h1>
+<div class="container container-1">
+<div >
+  <h1 class="tabletitle">All Appoinment </h1>
 </div>
 <div class="tablediv">
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">appointmentId</th>
-        <th scope="col">appointmentDate</th>
-        <th scope="col">appointmentTime</th>
-        <th scope="col">appointmentStatus</th>
-        <th scope="col">appointmentType</th>
+        <th scope="col">AppointmentId</th>
+        <th scope="col">SalonName</th>
+        <th scope="col">StylistName</th>
+        <th scope="col">AppointmentDate</th>
+        <th scope="col">AppointmentTime</th>
+        <th scope="col">AppointmentStatus</th>
+        <th scope="col">AppointmentType</th>
+        <th scope="col">GrandTotal</th>
+        <th scope="col">ViewInvoiceDetails</th>
+        <th scope="col">CancelAppointment</th>
+     
       </tr>
     </thead>
     <tbody>
@@ -20,12 +27,31 @@
         "
       >
         <td scope="col">{{ appointment.appointmentId }}</td>
+        <td scope="col">{{ appointment.salon.salonname}}</td>
+        <td scope="col">{{ appointment.stylist.firstname}}  {{ appointment.stylist.lastname}}</td>
         <td scope="col">{{ appointment.appointmentDate }}</td>
         <td scope="col">{{ appointment.appointmentTime }}</td>
         <td scope="col">{{ appointment.appointmentStatus }}</td>
         <td scope="col">{{ appointment.appointmentType }}</td>
-
-        <td></td>
+        <td scope="col">₹{{ appointment.appointmentGrandTotal }}</td>
+        <td scope="col">
+        <button
+          color="primary"
+          *ngIf="appointment.appointmentStatus != 'Cancelled'"
+          mat-raised-button
+          (click)="viewInvoice(this.appointment.appointmentId)"
+        >
+          ViewInvoiceDetails
+        </button></td>
+        <td scope="col">
+          <button
+            color="warn"
+            *ngIf="appointment.appointmentDate > today && appointment.appointmentStatus != 'Cancelled'"
+            mat-raised-button
+            (click)="cancel(this.appointment.appointmentId)"
+          >
+            Cancel
+          </button></td>
       </tr>
     </tbody>
   </table>
@@ -33,4 +59,5 @@
   <div class="text-right">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
+</div>
 </div>

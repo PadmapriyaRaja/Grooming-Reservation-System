@@ -13,8 +13,6 @@ export class ViewallserviceComponent {
   
 
 service: Service[]=[];
-recordsPerPage: string|number;
-pagenum: string|number;
 services: Service[]=[];
 selectedServices: number[] = [];
 selectedServicesstr:string="";

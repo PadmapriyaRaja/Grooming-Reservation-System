@@ -13,22 +13,22 @@
           type="text"
           id="form3Example1cg"
           class="form-control form-control-lg"
-          name="name"
+          name="servicename"
           minlength="3"
           required
-          #name="ngModel"
+          #servicename="ngModel"
           [(ngModel)]="services.servicesname"
-          pattern="^[A-Za-z]+$"
+          pattern="^[a-zA-Z][a-zA-Z ]+"
         />
       </div>
-      <div *ngIf="name.invalid && (name.dirty || name.touched)">
-        <div *ngIf="name.errors?.['required']">name is required</div>
-        <div *ngIf="name.errors?.['minlength']">
-          name should have atleast 4 chars
+      <div *ngIf="servicename.invalid && (servicename.dirty || servicename.touched)">
+        <div *ngIf="servicename.errors?.['required']">*name is required</div>
+        <div *ngIf="servicename.errors?.['minlength']">
+          *name should have atleast 4 chars
         </div>
 
-        <div *ngIf="name.errors?.['pattern']">
-          name should have only alphabets
+        <div *ngIf="servicename.errors?.['pattern']">
+          *name should have only alphabets
         </div>
       </div>
 
@@ -45,7 +45,7 @@
           required
           #servicesdescription="ngModel"
           [(ngModel)]="services.servicesdescription"
-        />
+        >
       </div>
       <div
         *ngIf="
@@ -59,11 +59,8 @@
       </div>
 
       <!--services gendertype-->
-      <div class="form-outline mb-2">
-        <label class="form-label" for="form3Example1cg">
-          SERVICES GENDER
-        </label>
-        <div *ngIf="services.servicesgendertype == 'Male'; else changegender">
+      <ng-container [ngSwitch]="true">
+        <div *ngSwitchCase="services.servicesgendertype == 'Male'">
           <mat-radio-group [(ngModel)]="services.servicesgendertype" required>
             <mat-radio-button
               value="Male"
@@ -81,23 +78,48 @@
             >
           </mat-radio-group>
         </div>
-        <div>
-          <ng-template #changegender>
-            <mat-radio-group [(ngModel)]="services.servicesgendertype" required>
-              <mat-radio-button value="Male" (click)="setradio('Male')"
-                >Male</mat-radio-button
-              >
 
-              <mat-radio-button
-                value="Female"
-                [checked]="services.servicesgendertype"
-                (click)="setradio('Female')"
-                >Female</mat-radio-button
-              >
-            </mat-radio-group>
-          </ng-template>
+        <div *ngSwitchCase="services.servicesgendertype == 'Female'">
+          <mat-radio-group [(ngModel)]="services.servicesgendertype" required>
+            <mat-radio-button
+              value="Male"
+              (click)="setradio('Male')"
+              >Male</mat-radio-button
+            >
+
+            <mat-radio-button value="Female" [checked]="services.servicesgendertype" (click)="setradio('Female')"
+              >Female</mat-radio-button
+            >
+
+            <mat-radio-button value="Both" (click)="setradio('Both')"
+              >Both</mat-radio-button
+            >
+          </mat-radio-group>
         </div>
-      </div>
+
+        <div *ngSwitchCase="services.servicesgendertype == 'Both'">
+          <mat-radio-group [(ngModel)]="services.servicesgendertype" required>
+            <mat-radio-button
+              value="Male"
+              (click)="setradio('Male')"
+              >Male</mat-radio-button
+            >
+
+            <mat-radio-button value="Female"  (click)="setradio('Female')"
+              >Female</mat-radio-button
+            >
+
+            <mat-radio-button value="Both" [checked]="services.servicesgendertype" (click)="setradio('Both')"
+              >Both</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+
+
+
+
+      </ng-container>
+      
 
       <!--services price-->
       <div class="form-outline mb-2">
@@ -112,7 +134,7 @@
           [(ngModel)]="services.servicesprice"
           min="100"
           max="2000000"
-        />
+        >
       </div>
       <div
         *ngIf="

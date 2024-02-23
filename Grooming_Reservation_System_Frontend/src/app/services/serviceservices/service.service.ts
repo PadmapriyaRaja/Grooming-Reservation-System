@@ -12,7 +12,7 @@ export class ServiceService {
   constructor(private http:HttpClient,private userDataService: UserDataService ) { }
   
   getAllServices(){
-    return this.http.get<[Service]>(`${this.url}/getAllServices`);
+    return this.http.get<Service[]>(`${this.url}/getAllServices`);
   }
 
   getAllServicesBySalonId(salonid:number){

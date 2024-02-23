@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-terms-and-conditions',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./terms-and-conditions.component.css']
 })
 export class TermsAndConditionsComponent {
-
+  constructor(private dialogRef:MatDialogRef<TermsAndConditionsComponent>){}
+  backtopage(){
+    this.dialogRef.close();
+  }
 }

@@ -1,0 +1,6 @@
+.container-1{
+    min-height: 500px;
+    .tabletitle{
+        margin-top: 12px;
+    }
+}

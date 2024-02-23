@@ -23,7 +23,6 @@ categories: any;
   }
 
   getSalonByCategory(salonCategory:any){
-    // this.salondataservice.getEnabledSalonByCategory(salonCategory).subscribe(data => this.categories=data);
     this.viewallsalon.getSalonbyCategory(salonCategory);
   }
 

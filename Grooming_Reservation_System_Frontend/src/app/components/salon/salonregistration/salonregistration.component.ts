@@ -6,6 +6,7 @@ import { SalonService } from 'src/app/services/salonservices/salonservice.servic
 import { RecordexistcomponentComponent } from '../../popups/recordexistcomponent/recordexistcomponent.component';
 import { InvalidcomponentComponent } from '../../popups/invalidcomponent/invalidcomponent.component';
 import { DataService } from 'src/app/services/data.service';
+import { TermsAndConditionsComponent } from '../../terms-and-conditions/terms-and-conditions.component';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class SalonregistrationComponent {
   stateName: string;
   cityId: any;
   salonStat: any;
-  
+  isAccept=false;
 
 
   salonCategories: string[]=['Hair salon','Barber','Massages','Nail salon','Waxing','Facials','Hair care','Hair cutting','Tanning','Hybrid'];
@@ -84,11 +85,7 @@ export class SalonregistrationComponent {
       
       }
     
-      // onSalonCategoryChange() {
-      //   console.log(this.saloncategory);
-      //   console.log(this.salon.saloncategory);
-      //   }
-
+      
       createTimeString() {
         this.timeString = this.selectedSalonBuisnesHoursStart.value+ ':00-' +this.selectedSalonBuisnesHoursEnd.value+':00';
         console.log('timestring is: ' , this.timeString);
@@ -105,7 +102,7 @@ export class SalonregistrationComponent {
         }
         if(this.selectedSalonBuisnesDayStart == this.selectedSalonBuisnesDayEnd){
           this.msg ='Buisnes opening and closing day cannot be same';
-          this.msg ='Please select Salon Buisnes Days';
+          //this.msg ='Please select Salon Buisnes Days';
           this.matDialog.open(InvalidcomponentComponent,{
             width: '700px',
             data:this.msg
@@ -154,14 +151,7 @@ export class SalonregistrationComponent {
     this.saloncountry
     );
 
-    // addressForm = this.builder.group({
-    //   salonname: this.builder.control('',[Validators.required, Validators.minLength(4), Validators.pattern("[a-zA-Z][a-zA-Z ]+")]),
-    //   salonaddress: this.builder.control('', [Validators.required]),
-    //   saloncity: this.builder.control('', [Validators.required,Validators.required]),
-    //   state: this.builder.control('', [Validators.required,Validators.required]),
-    //   pincode: this.builder.control('', [Validators.required, Validators.pattern('^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$')]),
-    //   country: this.builder.control('', [Validators.required,Validators.required])
-    // })
+    
 
   constructor(
     private salonservice: SalonService ,
@@ -171,7 +161,7 @@ export class SalonregistrationComponent {
   
   ngOnInit() {
     this.getCountries();    
-    // this.salonservice.getAllSalonCategories().subscribe(data=> this.salonCategories=data);
+    
   }
 
        salonregister(){
@@ -295,5 +285,13 @@ export class SalonregistrationComponent {
   loginBtn(){
     this.router.navigate(['salonlogin']);
   }  
+
+  termsandcondition(){
+    this.matDialog.open(TermsAndConditionsComponent,{
+      width: '1000px'
+     
+    })
+  }
+  
 
 }

@@ -13,8 +13,8 @@ import { EditstylistComponent } from '../editstylist/editstylist.component';
 export class AllstylistComponent {
 
   stylists: Stylist[]=[];
-  recordsPerPage: 10;
-  pagenum: any;
+  p : number =1;
+  count : number =10;
 
   salonidstr=sessionStorage.getItem("salonid");
   salonid=parseInt(this.salonidstr);

@@ -1,70 +1,3 @@
-<!-- <p>viewallsalon works!</p>
-<div>
-    <h1 class="tabletitle">All Registered User Data</h1>
-  </div>
-  <div class="tablediv">
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          
-          <th scope="col">Service Name</th>
-          <th scope="col">Service Description</th>
-          <th scope="col">Service price</th>
-          <th scope="col">Service gendertype</th>
-         
-         
-        
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="
-            let service of service
-              | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum } " >
-         
-          <td scope="col">{{ service.servicesname }}</td>
-          <td scope="col">{{ service.servicesdescription }}</td>
-          <td scope="col">{{ service.servicesprice }}</td>
-          <td scope="col">{{ service.servicesgendertype }}</td>
-       
-         
-            
-          <td></td>
-        </tr>
-      </tbody>
-    </table> -->
-<!--Including the pagination control.
-    <div class="text-right">
-      <pagination-controls (pageChange)="pagenum = $event"></pagination-controls>
-    </div>
-  </div>-->
-
-<!--New Checkbox Method
-  <div class="container">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Checkboxes</th>
-          <th scope="col">Services</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let service of services">
-          <th scope="row">
-            <input class="form-check-input" type="checkbox" [value]="service.servicesid"
-              [checked]="selectedServices.includes(service.servicesid)" (change)="toggleService(service.servicesid)">
-          </th>
-          <td>{{ service.servicesname }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <button type="submit" (click)="Onsubmit()">Submit</button>
-  </div>
-
--->
-
-<!-- <app-navbar></app-navbar> -->
-
 <section class="viewallservice bg-pink-light px-4 py-4 px-lg-5 py-lg-5 h-100">
   <div class="allWrapper pb-2">
     <div class="container px-1 px-lg-2">
@@ -78,12 +11,6 @@
           <div class="col-sm-12">
             <div class="quiz_content_area">
               <div class="row">
-                <!--Card-->
-
-                <!-- end of col3  -->
-                <!--Remove the above card when displaying the services-->
-
-                <!--Card2-->
                 <div class="col-sm-3" *ngFor="let service of services">
                   <div class="quiz_card_area">
                     <input
@@ -105,17 +32,17 @@
                             alt="service-image"
                           />
                         </div>
-                        <!-- end of quiz_card_media -->
+                        
                         <div>
                           <div class="quiz_card_title">
                             <h3>
-                              <i class="fa fa-check" aria-hidden="true"></i>
+                              <i  aria-hidden="true"></i>
                               {{ service.servicesname }}
                             </h3>
                           </div>
                           <div class="quiz_card_title">
                             <h3>
-                              <i class="fa fa-check" aria-hidden="true"></i>
+                              <i  aria-hidden="true"></i>
                               Price:
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -133,21 +60,21 @@
                             </h3>
                           </div>
                         </div>
-                        <!-- end of quiz_card_title -->
+                        
                       </div>
-                      <!-- end of quiz_card_content -->
+                      
                     </div>
-                    <!-- end of single_quiz_card -->
+                   
                   </div>
-                  <!-- end of quiz_card_area -->
+                  
                 </div>
-                <!-- end of col3  -->
+               
               </div>
-              <!-- end of quiz_card_area -->
+             
             </div>
-            <!-- end of quiz_content_area -->
+           
           </div>
-          <!-- end of col12 -->
+          
 
           <div class="col-sm-12">
             <div class="quiz_next">
@@ -155,17 +82,17 @@
                 Continue
               </button>
             </div>
-            <!-- end of quiz_next -->
+            
           </div>
-          <!-- end of col12 -->
+          
         </div>
-        <!-- end of row -->
+        
       </div>
-      <!-- end of container -->
+      
     </section>
-    <!-- end of quiz_section -->
+    
   </div>
-  <!-- end of allWrapper -->
+  
 </section>
 
-<!-- <app-footer></app-footer> -->
+

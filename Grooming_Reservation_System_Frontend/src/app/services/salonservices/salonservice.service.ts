@@ -37,20 +37,6 @@ export class SalonService {
     return this.http.get<Salon[]>(`${this.url}/getAllSalon`);
   }
 
-  // getAllSalonWithCount(){
-  //   return this.http.get<any[]>(`${this.url}/getAllSalon`, { observe: 'response' }).subscribe(data=>{
-  //     const contentRangeHeader = data.headers.get('Content-Range');
-
-  //       if (contentRangeHeader) {
-  //         const totalItems = +contentRangeHeader.split('/').pop();
-  //         // console.log('Total items:', totalItems);
-  //       }
-
-  //       // Your data handling logic here
-  //       // console.log('Data from backend:', data.body);
-  //   });
-  // }
-
   updateSalonById(salonid: any, salon: Salon){
     return this.http.put<Salon>(`${this.url}/updateSalonById/${salonid}`,salon);
   }
@@ -108,6 +94,14 @@ export class SalonService {
 
   getEnabledSalonByCategory(salonCatergory: string) {
       return this.http.get<Salon[]>(`${this.url}/getEnabledSalonByCategory/${salonCatergory}`);
+  }
+
+  getSalonByEmail(salonemail:string){
+    return this.http.get<Salon>(`${this.url}/getSalonByEmail/${salonemail}`)
+  }
+
+  getAllAppliedSalon(){
+    return this.http.get<Salon[]>(`${this.url}/getAllAppliedSalon`)
   }
 
 }

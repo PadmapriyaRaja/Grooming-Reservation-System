@@ -134,3 +134,6 @@
     background-color: rgb(255, 26, 255);
     align-items: start !important;
 }
+.checked{
+    color: orange;
+}

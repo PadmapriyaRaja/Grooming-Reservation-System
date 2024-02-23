@@ -43,7 +43,7 @@ export class UpdatesalonprofileComponent {
   
 
 
-  salonCategories: string[]=[];
+  salonCategories: string[]=['Hair salon','Barber','Massages','Nail salon','Waxing','Facials','Hair care','Hair cutting','Tanning','Hybrid'];
   timeString='';
   selectedSalonBuisnesHoursStart: any;
   selectedSalonBuisnesHoursEnd: any;
@@ -95,7 +95,6 @@ export class UpdatesalonprofileComponent {
 
       ngOnInit(){
         this.getCountries();    
-        this.salondataservice.getAllSalonCategories().subscribe(data=> this.salonCategories=data);
         this.salondataservice.getSalonById(this.salonid).subscribe(data=> this.salon=data);
       }
 
@@ -113,14 +112,11 @@ export class UpdatesalonprofileComponent {
           data:this.msg
         })
         
-      }
+      } 
       
       }
     
-      // onSalonCategoryChange() {
-      //   console.log(this.saloncategory);
-      //   console.log(this.salon.saloncategory);
-      //   }
+      
 
       createTimeString() {
         this.timeString = this.selectedSalonBuisnesHoursStart.value+ ':00-' +this.selectedSalonBuisnesHoursEnd.value+':00';
@@ -171,18 +167,6 @@ export class UpdatesalonprofileComponent {
     this.salonpicurl,
     this.saloncountry
     );
-
-    // addressForm = this.builder.group({
-    //   salonname: this.builder.control('',[Validators.required, Validators.minLength(4), Validators.pattern("[a-zA-Z][a-zA-Z ]+")]),
-    //   salonaddress: this.builder.control('', [Validators.required]),
-    //   saloncity: this.builder.control('', [Validators.required,Validators.required]),
-    //   state: this.builder.control('', [Validators.required,Validators.required]),
-    //   pincode: this.builder.control('', [Validators.required, Validators.pattern('^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$')]),
-    //   country: this.builder.control('', [Validators.required,Validators.required])
-    // })
-
-  
-  
 
        salonregister(){
         if(this.salonBuisnesDayStart=='select'){

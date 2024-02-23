@@ -17,15 +17,21 @@ city="";
 state="";
 zipcode="";
 country="";
+
   
   useridstr=sessionStorage.getItem("userid");
   userid=parseInt(this.useridstr);
 constructor(private addressService:AddressServiceService,private router:Router){}
 address:Address =new Address(this.addressid,this.houseno,this.street,this.city,this.state,this.zipcode,this.country);
 
-
+data:any;
 registerAddress() {
-  this.addressService.addAddress(this.address,this.userid).subscribe(()=>this.router.navigate['viewuser']);
+  this.addressService.addAddress(this.address,this.userid).subscribe(
+      data=>{this.data=data,
+        console.log(this.data),
+        this.router.navigate(['viewuser'])}
+    );
+    
 }
   
 

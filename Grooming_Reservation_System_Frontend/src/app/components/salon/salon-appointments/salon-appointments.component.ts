@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Appointment } from 'src/app/dao/appointment';
 import { AppointmentService } from 'src/app/services/appointmentservices/appointment.service';
-import { SalonService } from 'src/app/services/salonservices/salonservice.service';
 import { InvalidcomponentComponent } from '../../popups/invalidcomponent/invalidcomponent.component';
 
 @Component({
@@ -11,7 +9,7 @@ import { InvalidcomponentComponent } from '../../popups/invalidcomponent/invalid
 })
 export class SalonAppointmentsComponent {
 
-  salonname=sessionStorage.getItem("salonname");
+  salonname=sessionStorage.getItem("salonname"); 
   appointments: any[]=[];
   p : number =1;
   count : number =8;

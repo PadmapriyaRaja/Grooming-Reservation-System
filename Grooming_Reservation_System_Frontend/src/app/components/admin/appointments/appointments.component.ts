@@ -1,9 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { Appointment } from 'src/app/dao/appointment';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { InvalidcomponentComponent } from '../../popups/invalidcomponent/invalidcomponent.component';
 import { AppointmentService } from 'src/app/services/appointmentservices/appointment.service';
-import { Salon } from 'src/app/dao/salon';
 import { SalonService } from 'src/app/services/salonservices/salonservice.service';
 
 @Component({

@@ -14,10 +14,15 @@ export class SalonhomepageComponent {
   ngOnInit(){
     this.salonname = sessionStorage.getItem("salonname");
     console.log(this.salonname);
+    if(sessionStorage.getItem("navReloadFlag") == '0'){
+      sessionStorage.setItem("navReloadFlag", '1');
+      window.location.reload();
+    }
   }
 
 logout() {
   this.salonservice.logout();
+  sessionStorage.setItem("navReloadFlag", '0');
   this.router.navigate(['salonlogin']);
 }
   

@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Appointment } from 'src/app/dao/appointment';
 import { User } from 'src/app/dao/user';
 import { AppointmentService } from 'src/app/services/appointmentservices/appointment.service';
 

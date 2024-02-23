@@ -4,8 +4,9 @@ import { UserauthenticationService } from 'src/app/services/userservices/useraut
 import { UserDataService } from 'src/app/services/userservices/userdataservice.service'; 
 import { MatDialog} from  '@angular/material/dialog';
 import { InvalidcomponentComponent } from '../popups/invalidcomponent/invalidcomponent.component';
+import { ForgotpassswordComponent } from '../user/forgotpasssword/forgotpasssword.component';
 
-// import {DialogBodyComponent} from 
+
 
 @Component({
   selector: 'app-login',
@@ -57,8 +58,16 @@ export class LoginComponent {
       this.router.navigate(['adminhomepage']);
     }
     else{
+      sessionStorage.setItem("navReloadFlag", '0');
       this.router.navigate(['homepage']);
     }
+  }
+
+  forgotPass(){
+    this.matDialog.open(ForgotpassswordComponent,{
+      width: '700px'
+      
+    })
   }
 
 }

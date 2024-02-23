@@ -27,10 +27,6 @@ export class ViewuserComponent {
     this.userDataService.getUserByEmail(this.usermail).subscribe(data =>
       this.user = data, );
   }
-  // deleteUser(userid:number) {
-  //   this.dataserviceService.deleteUser(userid).subscribe(()=>console.log("Deleted"));
-  //   window.location.reload();
-  // }
 
   updateUser(userid: any):void {
    this.matDialog.open(UpdateuserComponent,{

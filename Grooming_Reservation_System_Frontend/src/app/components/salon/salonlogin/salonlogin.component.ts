@@ -5,6 +5,7 @@ import { SalonService } from 'src/app/services/salonservices/salonservice.servic
 import { InvalidcomponentComponent } from '../../popups/invalidcomponent/invalidcomponent.component';
 
 
+
 @Component({
   selector: 'app-salonlogin',
   templateUrl: './salonlogin.component.html',
@@ -55,7 +56,7 @@ export class SalonLoginComponent {
           }
 
           }
-        
+          
         
     
 }

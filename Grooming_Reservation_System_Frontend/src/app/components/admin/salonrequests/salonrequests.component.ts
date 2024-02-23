@@ -13,12 +13,12 @@ import { InvalidcomponentComponent } from '../../popups/invalidcomponent/invalid
 })
 export class SalonrequestsComponent {
   salons: Salon[]=[];
-  recordsPerPage: string|number;
-  pagenum: string|number;
+  count: number =10;
+  p: number=1;
   msg:string;
   
     ngOnInit(){
-      this.salondataservice.getAllSalon().subscribe(data => this.salons=data);
+      this.salondataservice.getAllAppliedSalon().subscribe(data => this.salons=data);
     }
   
     deleteSalon(salonid: any, salon: Salon) {

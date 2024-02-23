@@ -5,16 +5,15 @@
   <div class="tablediv">
     <table class="table">
       <thead class="thead-dark">
-        <tr>
+        <tr> 
           <th scope="col">Appointment ID</th>
-          <th scope="col">User ID</th>
-          <th scope="col">Salon ID</th>
-          <th scope="col">Stylist ID</th>
+          <th scope="col">User ID - User Name</th> 
+          <th scope="col">Salon ID - Salon Name</th>
+          <th scope="col">Stylist ID - Stylist Name </th>
           <th scope="col">Appointment Date</th>
-
-          <th scope="col">Appointment Start Time</th>
-
+          <th scope="col">Appointment Time</th>
           <th scope="col">Appointment Type</th>
+          <th scope="col">Appointment GrandTotal</th>
         </tr>
       </thead>
       <tbody>
@@ -25,12 +24,13 @@
           "
         >
           <td>{{ appointment.appointmentId }}</td>
-          <td>{{ appointment.user.userid }}</td>
-          <td>{{ appointment.salon.salonid }}</td>
-          <td>{{ appointment.stylist.stylistid }}</td>
+          <td>{{ appointment.user.userid }} - {{ appointment.user.userfirstname }}</td>
+          <td>{{ appointment.salon.salonid }} - {{ appointment.salon.salonname }}</td>
+          <td>{{ appointment.stylist.stylistid }} - {{ appointment.stylist.firstname }}</td>
           <td>{{ appointment.appointmentDate }}</td>
           <td>{{ appointment.appointmentTime }}</td>
           <td>{{ appointment.appointmentType }}</td>
+          <td>{{ appointment.appointmentGrandTotal }}</td>
         </tr>
       </tbody>
     </table>

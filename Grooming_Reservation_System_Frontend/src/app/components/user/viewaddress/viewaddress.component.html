@@ -19,7 +19,7 @@
       <tr
         *ngFor="
           let address of address
-            | paginate : { itemsPerPage: recordsPerPage, currentPage: pagenum }
+            | paginate : { itemsPerPage: count, currentPage: p }
         "
       >
         <td scope="col">{{ address.houseno }}</td>
@@ -55,6 +55,6 @@
   </button>
   <!--Including the pagination control.-->
   <div class="text-right">
-    <pagination-controls (pageChange)="pagenum = $event"></pagination-controls>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>

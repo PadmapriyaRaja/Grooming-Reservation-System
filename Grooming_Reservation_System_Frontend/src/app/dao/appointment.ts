@@ -6,6 +6,7 @@ export class Appointment {
             public appointmentTime: string,
             public appointmentStatus: string,
             public appointmentType: string,
+            public appointmentGrandTotal:number,
             public salonid,
             public stylistid,
             public userid,

@@ -19,7 +19,6 @@ export class AddstylistComponent {
   stylistemail="";
   stylistspecialization="";
   stylistrating=1;
-  // salonidstr=sessionStorage.getItem("salonid");
   salonidstr = sessionStorage.getItem("salonid");
   salonid=parseInt(this.salonidstr);
   stylist:Stylist=new Stylist(this.stylistid,this.firstname,this.lastname,this.stylistphonenum,this.stylistemail,this.stylistspecialization,this.stylistrating, this.salonidstr)
